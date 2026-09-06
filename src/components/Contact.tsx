@@ -1,6 +1,6 @@
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { DEFAULT_WA_MESSAGE, mapsUrl, SITE, waLink } from "../data/site";
-import { ClockIcon, PinIcon, WhatsAppIcon } from "./icons";
+import { ClockIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "./icons";
 import { useRef, useState } from "react";
 
 export default function Contact() {
@@ -27,6 +27,7 @@ export default function Contact() {
 
   return (
     <motion.section
+      id="contact"
       ref={sectionRef}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
@@ -48,10 +49,7 @@ export default function Contact() {
 
       <div className="mt-16 grid gap-4 lg:grid-cols-12">
         {/* WhatsApp card */}
-        <motion.a
-          href={waLink(DEFAULT_WA_MESSAGE)}
-          target="_blank"
-          rel="noopener noreferrer"
+        <motion.div
           custom={0}
           variants={cardVariants}
           initial="hidden"
@@ -66,10 +64,23 @@ export default function Contact() {
           </span>
           <h3 className="mt-4 font-display text-lg tracking-widest text-white">WHATSAPP</h3>
           <p className="mt-1 text-sm text-neutral-300">+{SITE.phone}</p>
-          <p className="mt-3 text-xs uppercase tracking-widest text-brand">
+          <a
+            href={waLink(DEFAULT_WA_MESSAGE)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 text-xs uppercase tracking-widest text-brand transition hover:text-white"
+          >
             Tap to chat →
-          </p>
-        </motion.a>
+          </a>
+          <a
+            href={`tel:+${SITE.phone}`}
+            onClick={(event) => event.stopPropagation()}
+            className="mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-400 transition hover:text-white"
+          >
+            <PhoneIcon className="h-3.5 w-3.5" />
+            Call the grill
+          </a>
+        </motion.div>
 
         {/* Location card */}
         <motion.a
