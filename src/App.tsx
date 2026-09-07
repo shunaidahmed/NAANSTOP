@@ -1,3 +1,4 @@
+import { LanguageProvider } from "./i18n/LanguageContext";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Marquee from "./components/Marquee";
@@ -9,24 +10,26 @@ import FloatingWhatsApp from "./components/FloatingWhatsApp";
 
 export default function App() {
   return (
-    <div className="site-shell relative isolate min-h-screen overflow-hidden">
-      <div aria-hidden="true" className="cafe-ambience pointer-events-none fixed inset-0 -z-10">
-        <div className="ambience-lamp ambience-lamp-left" />
-        <div className="ambience-lamp ambience-lamp-right" />
-        <div className="ambience-grid" />
-        <div className="ambience-dust ambience-dust-one" />
-        <div className="ambience-dust ambience-dust-two" />
+    <LanguageProvider>
+      <div className="site-shell relative isolate min-h-screen overflow-hidden">
+        <div aria-hidden="true" className="cafe-ambience pointer-events-none fixed inset-0 -z-10">
+          <div className="ambience-lamp ambience-lamp-left" />
+          <div className="ambience-lamp ambience-lamp-right" />
+          <div className="ambience-grid" />
+          <div className="ambience-dust ambience-dust-one" />
+          <div className="ambience-dust ambience-dust-two" />
+        </div>
+        <Navbar />
+        <main>
+          <Hero />
+          <Marquee />
+          <Menu />
+          <About />
+          <Contact />
+        </main>
+        <Footer />
+        <FloatingWhatsApp />
       </div>
-      <Navbar />
-      <main>
-        <Hero />
-        <Marquee />
-        <Menu />
-        <About />
-        <Contact />
-      </main>
-      <Footer />
-      <FloatingWhatsApp />
-    </div>
+    </LanguageProvider>
   );
 }
