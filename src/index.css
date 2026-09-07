@@ -5,8 +5,15 @@
   --color-brand-dark: #b3121f;
   --color-ink: #15151b;
   --color-ink-soft: #1d1d25;
-  --font-display: "Bodoni Moda", Georgia, serif;
-  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-logo: "Cormorant Garamond", Georgia, serif;
+  --font-hero: "Instrument Serif", serif;
+  --font-heading: "Instrument Serif", serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-nav: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-btn: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-price: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-menu-name: "Instrument Serif", serif;
+  --font-label: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -14,7 +21,7 @@ html {
 }
 
 body {
-  @apply bg-ink text-neutral-100 font-sans antialiased;
+  @apply bg-ink text-neutral-100 font-body antialiased;
   background-image:
     radial-gradient(ellipse 80% 50% at 50% -10%, rgba(227, 30, 36, 0.16), transparent),
     radial-gradient(ellipse 60% 40% at 90% 110%, rgba(227, 30, 36, 0.11), transparent),
@@ -37,18 +44,33 @@ section {
   contain-intrinsic-size: 1200px;
 }
 
+/* ── Font utility classes ──────────────────────────────────── */
+.font-logo { font-family: var(--font-logo); }
+.font-hero { font-family: var(--font-hero); font-style: italic; }
+.font-heading { font-family: var(--font-heading); font-style: italic; }
+.font-body { font-family: var(--font-body); }
+.font-nav { font-family: var(--font-nav); }
+.font-btn { font-family: var(--font-btn); font-weight: 600; }
+.font-price { font-family: var(--font-price); font-weight: 600; }
+.font-menu-name { font-family: var(--font-menu-name); font-style: italic; }
+.font-label { font-family: var(--font-label); font-weight: 600; }
+
+/* ── Editorial components ──────────────────────────────────── */
 .editorial-kicker {
   color: #f08b58;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
+  font-family: var(--font-label);
 }
 
 .editorial-heading {
   text-wrap: balance;
   letter-spacing: -0.045em;
   line-height: 0.94;
+  font-family: var(--font-hero);
+  font-style: italic;
 }
 
 .outline-word {
@@ -135,6 +157,7 @@ section {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  font-family: var(--font-nav);
   transition: color 220ms ease;
 }
 
@@ -188,6 +211,7 @@ section {
   color: rgba(255, 255, 255, 0.72);
   font-size: 1.5rem;
   line-height: 1;
+  font-family: var(--font-btn);
   transition: border-color 200ms ease, color 200ms ease, background 200ms ease;
 }
 
@@ -206,6 +230,7 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
   color: #fff;
+  font-family: var(--font-btn);
   transition: border-color 200ms ease, background 200ms ease;
 }
 
@@ -217,6 +242,7 @@ section {
 
 .cart-notice {
   pointer-events: none;
+  font-family: var(--font-btn);
 }
 
 .cafe-ambience {

@@ -37,27 +37,27 @@ export default function Hero() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_38%,rgba(227,30,36,0.22),transparent_28%),radial-gradient(circle_at_18%_82%,rgba(211,112,64,0.12),transparent_25%)]" />
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
         <motion.div initial={{ opacity: 0, x: -28 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative z-10 max-w-4xl">
-          <p className="editorial-kicker">{lang === "es" ? "El Masnou · a la parrilla diaria" : "El Masnou · grilled daily"}</p>
-          <h1 className="editorial-heading mt-6 max-w-6xl font-display text-[clamp(3.7rem,8.5vw,8.5rem)] text-white">
+          <p className="editorial-kicker font-label">{lang === "es" ? "El Masnou · a la parrilla diaria" : "El Masnou · grilled daily"}</p>
+          <h1 className="editorial-heading mt-6 max-w-6xl text-[clamp(3.7rem,8.5vw,8.5rem)] text-white font-hero">
             {lang === "es" ? "TACOS" : "FRENCH"} <span className="text-brand">{lang === "es" ? "FRANCESES" : "TACOS"}</span>
             <br />
             <span className="outline-word">{lang === "es" ? "DESPUÉS DE MEDIANNOCHE." : "AFTER DARK."}</span>
           </h1>
-          <p className="mt-8 max-w-xl text-base leading-relaxed text-neutral-300 sm:text-lg">
+          <p className="mt-8 max-w-xl text-base leading-relaxed text-neutral-300 sm:text-lg font-body">
             {lang === "es" ? "Tortillas tostadas, queso derretido, patatas doradas y ese tipo de consuelo nocturno que convierte un solo pedido en un ritual." : "Toasted wraps, molten cheese, golden fries and the kind of late-night comfort that makes one order turn into a ritual."}
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <motion.a href={waLink(waMsg)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand" whileHover={{ y: -3, scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+            <motion.a href={waLink(waMsg)} target="_blank" rel="noopener noreferrer" className="inline-flex font-btn items-center justify-center gap-2 rounded-full bg-brand px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand" whileHover={{ y: -3, scale: 1.03 }} whileTap={{ scale: 0.98 }}>
               <WhatsAppIcon className="h-4 w-4" />
               {lang === "es" ? "Pedir por WhatsApp" : "Order on WhatsApp"}
             </motion.a>
-            <motion.a href="#menu" className="inline-flex items-center justify-center gap-2 border-b border-neutral-500 px-1 py-3 text-sm font-semibold uppercase tracking-wider text-neutral-200 transition hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand" whileHover={{ x: 5, borderColor: "rgba(227,30,36,0.8)" }} whileTap={{ scale: 0.98 }}>
+            <motion.a href="#menu" className="inline-flex font-btn items-center justify-center gap-2 border-b border-neutral-500 px-1 py-3 text-sm font-semibold uppercase tracking-wider text-neutral-200 transition hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand" whileHover={{ x: 5, borderColor: "rgba(227,30,36,0.8)" }} whileTap={{ scale: 0.98 }}>
               {lang === "es" ? "Explorar el menú" : "Explore the menu"}
             </motion.a>
           </div>
           <ul className="mt-16 flex flex-wrap gap-x-7 gap-y-3">
             {features.map((feature) => (
-              <li key={feature} className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">
+              <li key={feature} className="flex items-center gap-2 text-xs font-label uppercase tracking-[0.16em] text-neutral-500">
                 <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand" />
                 {feature}
               </li>
@@ -77,8 +77,8 @@ export default function Hero() {
                 <div>
                   <AnimatePresence mode="wait">
                     <motion.div key={activeImage} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.45 }}>
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/65">{lang === "es" ? HERO_GALLERY[activeImage].labelEs : HERO_GALLERY[activeImage].labelEn}</p>
-                      <p className="mt-2 font-display text-3xl text-white">{lang === "es" ? HERO_GALLERY[activeImage].titleEs : HERO_GALLERY[activeImage].titleEn}</p>
+                      <p className="text-xs font-label uppercase tracking-[0.22em] text-white/65">{lang === "es" ? HERO_GALLERY[activeImage].labelEs : HERO_GALLERY[activeImage].labelEn}</p>
+                      <p className="mt-2 font-heading text-3xl text-white">{lang === "es" ? HERO_GALLERY[activeImage].titleEs : HERO_GALLERY[activeImage].titleEn}</p>
                     </motion.div>
                   </AnimatePresence>
                 </div>

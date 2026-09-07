@@ -53,19 +53,19 @@ export default function Navbar() {
       <nav className="site-nav mx-auto flex h-16 max-w-7xl items-center justify-between rounded-full px-4 sm:px-6" aria-label="Main navigation">
         <a href="#home" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <img src="/logo.svg" alt="NAAN STOP logo" className={`h-10 w-10 rounded-full ring-1 transition-all duration-500 ${scrolled ? "ring-brand/60 shadow-[0_0_16px_rgba(227,30,36,0.4)]" : "ring-neutral-700"}`} />
-          <span className="font-display text-lg tracking-wider text-white">NAAN<span className="text-brand"> STOP</span></span>
+          <span className="font-logo text-lg tracking-wider text-white">NAAN<span className="text-brand"> STOP</span></span>
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <a href={link.href} data-active={active === link.href.slice(1)} className="nav-link">{navLabel(link).toUpperCase()}</a>
+              <a href={link.href} data-active={active === link.href.slice(1)} className="nav-link font-nav">{navLabel(link).toUpperCase()}</a>
             </li>
           ))}
         </ul>
 
         <div className="flex items-center gap-3">
-          <a href={waLink(waMsg)} target="_blank" rel="noopener noreferrer" className="hidden items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark md:inline-flex">
+          <a href={waLink(waMsg)} target="_blank" rel="noopener noreferrer" className="hidden font-btn items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark md:inline-flex">
             <WhatsAppIcon className="h-4 w-4" />
             {lang === "es" ? "Pedir Ahora" : "Order Now"}
           </a>
@@ -83,11 +83,11 @@ export default function Navbar() {
           <ul className="flex flex-col gap-2 px-6 pt-8">
             {NAV_LINKS.map((link, i) => (
               <li key={link.href} className="animate-fade-up" style={{ animationDelay: `${i * 60}ms` }}>
-                <a href={link.href} onClick={() => setOpen(false)} className="block border-b border-neutral-800 py-4 font-display text-2xl tracking-widest text-neutral-100 transition-colors hover:text-brand">{navLabel(link).toUpperCase()}</a>
+                <a href={link.href} onClick={() => setOpen(false)} className="block border-b border-neutral-800 py-4 font-nav text-2xl tracking-widest text-neutral-100 transition-colors hover:text-brand">{navLabel(link).toUpperCase()}</a>
               </li>
             ))}
             <li className="pt-6">
-              <a href={waLink(waMsg)} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="flex w-full items-center justify-center gap-2 rounded-full bg-brand px-5 py-4 text-base font-semibold text-white transition hover:bg-brand-dark">
+              <a href={waLink(waMsg)} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="flex w-full font-btn items-center justify-center gap-2 rounded-full bg-brand px-5 py-4 text-base font-semibold text-white transition hover:bg-brand-dark">
                 <WhatsAppIcon className="h-5 w-5" />
                 {lang === "es" ? "Pedir por WhatsApp" : "Order on WhatsApp"}
               </a>
