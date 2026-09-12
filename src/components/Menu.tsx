@@ -361,7 +361,6 @@ const ItemCard = memo(function ItemCard({
         aria-label={name}
         className="absolute inset-0 z-0 cursor-pointer"
       />
-      <div className="pointer-events-none absolute inset-0 -z-10 h-full w-full rounded-xl bg-clip-border border-shimmer" />
       {item.img && (
         <div className="pointer-events-none mb-4 overflow-hidden rounded-lg border border-line bg-surface-2">
           <img

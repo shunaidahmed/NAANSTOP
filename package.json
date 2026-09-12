@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "npm run gen:defaults && vite",
-    "gen:defaults": "node scripts/gen-defaults.mjs",
     "build": "npm run gen:defaults && tsc -b && vite build",
     "preview": "vite preview",
+    "check": "node scripts/check.mjs",
     "typecheck": "tsc -b --noEmit",
-    "check": "node scripts/check.mjs"
+    "gen:defaults": "node scripts/gen-defaults.mjs",
+    "brand": "node scripts/build-brand.mjs"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.0",

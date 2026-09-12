@@ -37,7 +37,6 @@ export default function Contact() {
 
       <div className="mt-16 grid gap-4 lg:grid-cols-12">
         <motion.div custom={0} variants={cardVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }} whileHover={{ y: -6, scale: 1.01 }} className="cafe-card group relative flex flex-col items-center justify-center rounded-2xl p-8 text-center overflow-hidden lg:col-span-4">
-          <div className="pointer-events-none absolute inset-0 -z-10 h-full w-full rounded-xl bg-clip-border border-shimmer" />
           <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand text-white transition group-hover:scale-110"><WhatsAppIcon className="h-7 w-7" /></span>
           <h3 className="mt-4 font-heading text-lg tracking-widest text-fg">{t.contact.whatsapp}</h3>
           <p className="mt-1 text-sm font-body text-muted">+{SITE.phone}</p>
@@ -49,7 +48,6 @@ export default function Contact() {
         </motion.div>
 
         <motion.a href={mapsUrl()} target="_blank" rel="noopener noreferrer" custom={1} variants={cardVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }} whileHover={{ y: -6, scale: 1.014, borderColor: "rgba(227,30,36,0.5)" }} className="cafe-card group relative flex flex-col items-center justify-center rounded-2xl p-8 text-center overflow-hidden lg:col-span-4">
-          <div className="pointer-events-none absolute inset-0 -z-10 h-full w-full rounded-xl bg-clip-border border-shimmer" />
           <span className="flex h-14 w-14 items-center justify-center rounded-full border border-brand/50 text-brand transition group-hover:scale-110"><PinIcon className="h-6 w-6" /></span>
           <h3 className="mt-4 font-heading text-lg tracking-widest text-fg">{t.contact.findUs}</h3>
           <p className="mt-1 text-sm leading-relaxed font-body text-muted">{SITE.address}</p>
@@ -57,7 +55,6 @@ export default function Contact() {
         </motion.a>
 
         <motion.div custom={2} variants={cardVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }} whileHover={{ y: -4, scale: 1.01 }} className="cafe-card relative flex flex-col items-center justify-center rounded-2xl p-8 text-center overflow-hidden lg:col-span-4">
-          <div className="pointer-events-none absolute inset-0 -z-10 h-full w-full rounded-xl bg-clip-border border-shimmer" />
           <span className="flex h-14 w-14 items-center justify-center rounded-full border border-brand/50 text-brand"><ClockIcon className="h-6 w-6" /></span>
           <h3 className="mt-4 font-heading text-lg tracking-widest text-fg">{t.contact.openingHours}</h3>
           <ul className="mt-2 space-y-1">
@@ -74,7 +71,6 @@ export default function Contact() {
         </motion.div>
 
         <motion.div custom={3} variants={cardVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }} whileHover={{ y: -4, scale: 1.008 }} className="cafe-card relative mt-4 flex flex-col items-center gap-4 overflow-hidden rounded-2xl px-6 py-16 text-center lg:col-span-12">
-          <div className="pointer-events-none absolute inset-0 -z-10 h-full w-full rounded-xl bg-clip-border border-shimmer" />
           <p className="max-w-xl text-sm leading-relaxed font-body text-muted">
             {t.contact.message}
           </p>

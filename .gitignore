@@ -22,5 +22,6 @@ dist-ssr
 # Vercel
 .vercel
 
-# Unused local font drop (Gilroy is a commercial licence, and nothing loads it)
-/fonts/
+# Licensed font originals. The woff2 files the site actually serves live
+# in public/fonts/ and are committed; regenerate them with npm run fonts.
+/brand/fonts/

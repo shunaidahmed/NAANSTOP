@@ -79,7 +79,6 @@
   /* Interface: dish names, nav, buttons, prices, labels. */
   --font-ui: "Gilroy", "Supra Classic", ui-sans-serif, system-ui, sans-serif;
 
-  --font-logo: var(--font-display);
   --font-hero: var(--font-display);
   --font-heading: var(--font-display);
   --font-menu-name: var(--font-ui);
@@ -101,7 +100,6 @@
   --card-b: rgba(22, 20, 26, 0.9);
   --card-rim: rgba(255, 255, 255, 0.14);
   --card-rim-2: rgba(255, 255, 255, 0.06);
-  --card-sheen: rgba(255, 255, 255, 0.08);
   --card-shadow: 0 18px 55px rgba(0, 0, 0, 0.2), inset 0 1px rgba(255, 255, 255, 0.04);
   --card-shadow-hover: 0 24px 70px rgba(0, 0, 0, 0.32), 0 0 28px rgba(227, 30, 36, 0.12),
     inset 0 1px rgba(255, 255, 255, 0.08);
@@ -136,7 +134,6 @@ html[data-theme="light"] {
   --card-b: rgba(253, 248, 243, 0.96);
   --card-rim: rgba(29, 20, 22, 0.12);
   --card-rim-2: rgba(29, 20, 22, 0.05);
-  --card-sheen: rgba(227, 30, 36, 0.06);
   --card-shadow: 0 14px 40px rgba(76, 45, 35, 0.08), inset 0 1px rgba(255, 255, 255, 0.9);
   --card-shadow-hover: 0 20px 55px rgba(76, 45, 35, 0.14), 0 0 24px rgba(227, 30, 36, 0.1),
     inset 0 1px rgba(255, 255, 255, 0.9);
@@ -184,11 +181,6 @@ section {
 /* ── Type ───────────────────────────────────────────────────────
    Gilroy has two usable weights, so the hierarchy is carried by weight,
    case and slant rather than by five different families.            */
-.font-logo {
-  font-family: var(--font-logo);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-}
 .font-hero {
   font-family: var(--font-hero);
   font-weight: 900;
@@ -458,28 +450,16 @@ section {
     linear-gradient(var(--card-a), var(--card-b)) padding-box,
     linear-gradient(135deg, var(--card-rim), rgba(227, 30, 36, 0.52), var(--card-rim-2)) border-box;
   box-shadow: var(--card-shadow);
-  transition: box-shadow 350ms ease, background 350ms ease;
+  transition: box-shadow 250ms ease;
 }
 
-.cafe-card::before {
-  position: absolute;
-  inset: 1px;
-  z-index: -1;
-  border-radius: inherit;
-  background: linear-gradient(120deg, transparent 20%, var(--card-sheen), transparent 70%);
-  content: "";
-  opacity: 0;
-  transform: translateX(-40%);
-  transition: opacity 350ms ease, transform 600ms ease;
-}
-
+/* Hover deepens the shadow and warms the rim. The rim is painted by the
+   border-box gradient, so it changes by swapping the two stop colours —
+   no sweeping sheen, no looping shimmer. */
 .cafe-card:hover {
+  --card-rim: rgba(227, 30, 36, 0.75);
+  --card-rim-2: rgba(227, 30, 36, 0.35);
   box-shadow: var(--card-shadow-hover);
-}
-
-.cafe-card:hover::before {
-  opacity: 1;
-  transform: translateX(35%);
 }
 
 @keyframes lamp-breathe {
