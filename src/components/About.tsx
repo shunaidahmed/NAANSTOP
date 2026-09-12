@@ -17,7 +17,7 @@ export default function About() {
       const cards = gsap.utils.toArray<HTMLElement>("[data-story-card]");
       gsap.fromTo("[data-story-copy]", { opacity: 0, y: 70 }, { opacity: 1, y: 0, ease: "none", scrollTrigger: { trigger: sectionRef.current, start: "top 72%", end: "top 25%", scrub: 1 } });
       cards.forEach((card, index) => {
-        gsap.fromTo(card, { opacity: 0.25, y: 90 + index * 22, scale: 0.88 }, { opacity: 1, y: 0, scale: 1, ease: "none", scrollTrigger: { trigger: card, start: "top 92%", end: "top 42%", scrub: 1 } });
+        gsap.fromTo(card, { opacity: 0.25, y: 60 + (index % 2) * 20, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, ease: "none", scrollTrigger: { trigger: card, start: "top 92%", end: "top 42%", scrub: 1 } });
       });
     }, sectionRef);
     return () => context.revert();
@@ -49,18 +49,20 @@ export default function About() {
           </div>
         </div>
 
-        <div className="space-y-8">
+        <div>
+          <div className="grid gap-4 sm:grid-cols-2">
           {gallery.map((slide, index) => (
-            <figure key={slide.src + index} data-story-card className={`story-card cafe-card group relative overflow-hidden rounded-[1.5rem] ${index % 3 === 1 ? "lg:ml-20" : ""}`}>
+            <figure key={slide.src + index} data-story-card className="story-card cafe-card group relative overflow-hidden rounded-[1.5rem]">
               <img src={slide.src} alt={slide.alt} loading="lazy" decoding="async" width={1200} height={800} className="h-full w-full object-cover" />
               <div className="image-wash absolute inset-0" />
-              <figcaption className="absolute inset-x-7 bottom-7 flex items-end justify-between gap-4">
-                <span className="font-heading text-3xl text-white">{lang === "es" ? slide.captionEs : slide.caption}</span>
+              <figcaption className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3">
+                <span className="font-heading text-2xl leading-tight text-white">{lang === "es" ? slide.captionEs : slide.caption}</span>
                 <span className="font-mono text-xs text-white/55">{String(index + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}</span>
               </figcaption>
             </figure>
           ))}
-          <div className="story-accordion pt-8" aria-label={t.about.tagline}>
+          </div>
+          <div className="story-accordion pt-10" aria-label={t.about.tagline}>
             {highlights.map((highlight) => (
               <article key={highlight.title} className="cafe-card rounded-2xl p-6">
                 <FlameIcon className="h-5 w-5 text-brand" />

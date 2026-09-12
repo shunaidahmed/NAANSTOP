@@ -13,8 +13,10 @@ export default function Footer() {
     <footer className="border-t border-white/10 bg-black/20">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 px-4 py-16 sm:px-8 lg:px-12">
         <a href="#home" className="flex items-center gap-3">
-          <img src="/logo.svg" alt={`${SITE.name} logo`} className="h-12 w-12 rounded-full ring-1 ring-neutral-700" />
-          <span className="font-logo text-xl tracking-wider text-white">NAAN <span className="text-brand">STOP</span></span>
+          <span className="flex items-center rounded-2xl bg-[#f6f1ea] px-3 py-2 ring-1 ring-white/10">
+            <img src="/logo.png" alt={`${SITE.name} ${SITE.subtitle}`} width={760} height={537} loading="lazy" className="h-14 w-auto" />
+          </span>
+          <span className="whitespace-nowrap font-logo text-xl tracking-wider text-white">NAAN <span className="text-brand">STOP</span></span>
         </a>
 
         <div className="flex flex-col justify-between gap-8 border-y border-white/10 py-8 sm:flex-row sm:items-center">

@@ -101,10 +101,12 @@ export const DEFAULT_CONTENT: Content = {
   gallery: { hero: structuredClone(HERO_SLIDES), about: structuredClone(ABOUT_SLIDES) },
   nav: NAV_LINKS.map((l) => ({ ...l })),
   t: { es: translations.es as Record<string, unknown>, en: translations.en as Record<string, unknown> },
+  // The site is Spanish first — these overwrite the tags in index.html, so
+  // they have to be Spanish too or the tab title flips to English on load.
   seo: {
-    title: `${SITE.name} ${SITE.subtitle} - El Masnou, Barcelona`,
+    title: `${SITE.name} ${SITE.subtitle} — Tacos franceses en El Masnou`,
     description:
-      "French tacos, burgers and loaded fries grilled to order in El Masnou. Order on WhatsApp.",
+      "Tacos franceses, hamburguesas y patatas cargadas hechos al momento en El Masnou. Pide por WhatsApp.",
     ogImage: "/logo.png",
   },
   tags: DEFAULT_TAGS,

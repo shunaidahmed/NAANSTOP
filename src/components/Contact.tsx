@@ -1,10 +1,9 @@
 import { motion, useInView, useSpring, useTransform } from "framer-motion";
 import { ClockIcon, PhoneIcon, PinIcon, WhatsAppIcon } from "./icons";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Contact() {
-  const [motifImageFailed, setMotifImageFailed] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { once: false, amount: 0.25 });
   const ySpring = useSpring(0, { stiffness: 80, damping: 14 });
@@ -76,11 +75,6 @@ export default function Contact() {
 
         <motion.div custom={3} variants={cardVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.4 }} whileHover={{ y: -4, scale: 1.008 }} className="cafe-card relative mt-4 flex flex-col items-center gap-4 overflow-hidden rounded-2xl px-6 py-16 text-center lg:col-span-12">
           <div className="pointer-events-none absolute inset-0 -z-10 h-full w-full rounded-xl bg-clip-border border-shimmer" />
-          {!motifImageFailed && (
-            <div className="relative">
-              <img src="https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=800&q=80" alt="Freshly grilled tacos" loading="lazy" decoding="async" width={800} height={240} onError={() => setMotifImageFailed(true)} className="h-20 w-auto rounded-xl object-cover drop-shadow-lg transition-transform duration-500" />
-            </div>
-          )}
           <p className="max-w-xl text-sm leading-relaxed font-body text-neutral-400">
             {t.contact.message}
           </p>

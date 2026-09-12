@@ -53,8 +53,12 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-4 z-50 px-4 transition-colors sm:px-8">
       <nav className="site-nav mx-auto flex h-16 max-w-7xl items-center justify-between rounded-full px-4 sm:px-6" aria-label="Main navigation">
         <a href="#home" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img src="/logo.svg" alt="NAAN STOP logo" className={`h-10 w-10 rounded-full ring-1 transition-all duration-500 ${scrolled ? "ring-brand/60 shadow-[0_0_16px_rgba(227,30,36,0.4)]" : "ring-neutral-700"}`} />
-          <span className="font-logo text-lg tracking-wider text-white">NAAN<span className="text-brand"> STOP</span></span>
+          {/* The brand lockup is dark ink on white, so it sits on its own light
+              plate rather than being inverted or recoloured. */}
+          <span className={`flex h-11 items-center rounded-xl bg-[#f6f1ea] px-2.5 ring-1 transition-all duration-500 ${scrolled ? "ring-brand/60" : "ring-white/15"}`}>
+            <img src="/logo.png" alt={`${SITE.name} ${SITE.subtitle}`} width={760} height={537} className="h-8 w-auto" />
+          </span>
+          <span className="hidden whitespace-nowrap font-logo text-lg tracking-wider text-white sm:inline">NAAN<span className="text-brand"> STOP</span></span>
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">

@@ -19,8 +19,6 @@ export default function App() {
           <div className="ambience-lamp ambience-lamp-left" />
           <div className="ambience-lamp ambience-lamp-right" />
           <div className="ambience-grid" />
-          <div className="ambience-dust ambience-dust-one" />
-          <div className="ambience-dust ambience-dust-two" />
         </div>
         <Navbar />
         <main>

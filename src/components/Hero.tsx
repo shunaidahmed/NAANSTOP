@@ -30,7 +30,7 @@ export default function Hero() {
       <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
         <motion.div initial={{ opacity: 0, x: -28 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="relative z-10 max-w-4xl">
           <p className="editorial-kicker font-label">{t.hero.subtitle}</p>
-          <h1 className="editorial-heading mt-6 max-w-6xl text-[clamp(3.7rem,8.5vw,8.5rem)] text-white font-hero">
+          <h1 className="editorial-heading mt-6 max-w-6xl text-[clamp(2.9rem,8.5vw,8.5rem)] text-white font-hero">
             {t.hero.title1} <span className="text-brand">{t.hero.titleAccent}</span>
             <br />
             <span className="outline-word">{t.hero.title2}</span>

@@ -32,7 +32,10 @@ body {
 main {
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  /* `overflow-x: hidden` forces overflow-y to `auto`, which makes this a scroll
+     container and silently breaks every `position: sticky` inside it. `clip`
+     clips the same way without creating one. */
+  overflow-x: clip;
 }
 
 section {
@@ -89,7 +92,9 @@ section {
 }
 
 .story-card {
-  min-height: 25rem;
+  /* One ratio for every figure. Left to size themselves, the photos produced a
+     ladder of 385px to 969px cards down the page. */
+  aspect-ratio: 4 / 3;
 }
 
 .story-card img {
@@ -97,49 +102,22 @@ section {
   transition: filter 300ms ease;
 }
 
+/* These four cards used to collapse into slivers and hold their own text at 38%
+   opacity until hovered — which on a touch screen means never. */
 .story-accordion {
-  display: flex;
-  gap: 0.5rem;
-  min-height: 15rem;
-}
-
-.story-accordion article {
-  flex: 1 1 0%;
-  min-width: 0;
-  overflow: hidden;
-  transition: flex 500ms cubic-bezier(0.16, 1, 0.3, 1), background 300ms ease;
-}
-
-.story-accordion article:hover,
-.story-accordion article:focus-within {
-  flex: 2.6 1 0%;
-}
-
-.story-accordion article p,
-.story-accordion article h3 {
-  opacity: 0.38;
-  transition: opacity 300ms ease;
-}
-
-.story-accordion article:hover p,
-.story-accordion article:hover h3,
-.story-accordion article:focus-within p,
-.story-accordion article:focus-within h3 {
-  opacity: 1;
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 @media (max-width: 639px) {
   .story-accordion {
-    display: grid;
-    min-height: auto;
-  }
-
-  .story-accordion article {
-    min-height: 11rem;
+    grid-template-columns: 1fr;
   }
 }
 
 .site-shell {
+  overflow-x: clip;
   background: linear-gradient(180deg, rgba(20, 15, 19, 0.16), rgba(10, 11, 15, 0.42));
 }
 
@@ -289,27 +267,6 @@ section {
   mask-image: linear-gradient(to bottom, black, transparent 80%);
 }
 
-.ambience-dust {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 999px;
-  background: rgba(255, 211, 157, 0.7);
-  box-shadow: 0 0 18px 5px rgba(255, 151, 86, 0.25);
-  animation: dust-drift 13s ease-in-out infinite;
-}
-
-.ambience-dust-one {
-  top: 28%;
-  left: 18%;
-}
-
-.ambience-dust-two {
-  right: 24%;
-  bottom: 22%;
-  animation-delay: -6s;
-}
-
 .cafe-card {
   position: relative;
   isolation: isolate;
@@ -351,18 +308,6 @@ section {
   50% {
     transform: scale(1.08);
     opacity: 0.25;
-  }
-}
-
-@keyframes dust-drift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-    opacity: 0.15;
-  }
-  50% {
-    transform: translate3d(32px, -48px, 0);
-    opacity: 0.8;
   }
 }
 

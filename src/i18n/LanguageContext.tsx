@@ -47,6 +47,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   useEffect(() => applySeo(content.seo), [content.seo]);
   useEffect(() => applyTags(content.tags), [content.tags]);
 
@@ -55,7 +59,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     try {
       window.localStorage.setItem("naan-stop-lang", newLang);
     } catch {}
-    document.documentElement.lang = newLang;
   }, []);
 
   const value = useMemo<LanguageContextType>(() => {
