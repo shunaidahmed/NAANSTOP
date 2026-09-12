@@ -191,6 +191,12 @@ section {
 }
 
 .cart-drawer {
+  /* The drawer must not borrow .cafe-card's `position: relative`, or it lands
+     on the left of the screen instead of sliding in from the right. */
+  position: fixed;
+  right: 0;
+  top: 0;
+  border-left: 1px solid transparent;
   background:
     linear-gradient(180deg, rgba(31, 24, 31, 0.98), rgba(15, 13, 18, 0.99)) padding-box,
     linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(227, 30, 36, 0.64), rgba(255, 255, 255, 0.08)) border-box;

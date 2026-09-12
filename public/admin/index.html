@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>NAAN STOP — Site Manager</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0b0c'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23e31e24'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="admin.css?v=1" rel="stylesheet">
+</head>
+<body>
+
+<!-- ── sign in ─────────────────────────────────────────────── -->
+<div class="login" id="login">
+  <div class="login__card">
+    <h1>NAAN STOP <b>Site Manager</b></h1>
+    <p>Sign in to edit the website.</p>
+    <form id="loginForm" autocomplete="on">
+      <label class="f" style="margin:0">
+        <span class="lbl">Password</span>
+        <input type="password" id="pw" autocomplete="current-password" required>
+      </label>
+      <button class="btn btn--p" type="submit" style="width:100%">Sign in</button>
+    </form>
+    <div class="login__err" id="loginErr" role="alert"></div>
+  </div>
+</div>
+
+<!-- ── app ─────────────────────────────────────────────────── -->
+<div id="app" hidden>
+  <header class="top">
+    <div class="top__brand">NAAN STOP <b>Site Manager</b></div>
+    <div class="top__sp"></div>
+    <a href="/" target="_blank" rel="noopener">View site &#8599;</a>
+    <a href="/?preview=1" target="_blank" rel="noopener">Preview draft &#8599;</a>
+    <button class="link" id="logout" type="button">Sign out</button>
+  </header>
+
+  <div class="shell">
+    <nav class="side" id="side" aria-label="Sections"></nav>
+    <main class="main" id="main"></main>
+  </div>
+
+  <div class="savebar" id="savebar" hidden>
+    <span id="savemsg"><b>Unsaved changes</b></span>
+    <button class="btn btn--l btn--sm" id="discardBtn" type="button">Discard</button>
+    <button class="btn btn--l btn--sm" id="saveBtn" type="button">Save draft</button>
+    <button class="btn btn--p btn--sm" id="publishBtn" type="button">Publish</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" aria-live="polite"></div>
+
+<script src="admin.js?v=1"></script>
+</body>
+</html>

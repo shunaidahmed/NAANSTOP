@@ -13,7 +13,25 @@ npm run build      # typecheck + production build → dist/
 npm run preview    # preview the production build
 ```
 
-## Customize — edit `src/data/site.ts`
+## Admin panel
+
+The site has a CMS at **`/admin/`** — menu, copy, images, settings, analytics,
+with draft → publish. Setup and day-to-day use: **[SITE-MANAGER.md](SITE-MANAGER.md)**.
+
+```
+api/cms.ts             one serverless function — content, auth, uploads, history
+public/admin/          the panel itself (plain HTML/CSS/JS, no build step)
+src/cart/                the basket, order totals and the WhatsApp message
+src/cms/content.ts     the editable shape + defaults + overlay merge
+src/cms/head.ts        applies SEO and analytics tags to the live page
+scripts/gen-defaults.mjs   writes public/admin/defaults.json from src/cms/content.ts
+scripts/check.mjs      `npm run check` — merge + session-cookie checks
+```
+
+Storage is Vercel Blob. Published content overlays the files below, so the site
+still renders if the API is unreachable.
+
+## Customize the shipped defaults — edit `src/data/site.ts`
 
 Everything about your business lives in this one file:
 
@@ -23,11 +41,18 @@ Everything about your business lives in this one file:
 | **Address** | `SITE.address` |
 | **Opening hours** | `SITE.hours` |
 | **Currency symbol** | `SITE.currency` |
-| **Menu items & prices** | `MENU` — add/remove categories and items freely |
+| **Menu items & prices** | `MENU` — numeric prices, optional sizes |
+| **Ordering rules** | `SITE.delivery`, `deliveryFee`, `minDeliveryOrder`, `currency` |
+| **Hero / About photos** | `HERO_SLIDES`, `ABOUT_SLIDES` |
 | **Nav links** | `NAV_LINKS` |
 
-Every "Order" button opens WhatsApp (`wa.me/<number>`) with a pre-filled
-message naming the item, so orders arrive ready to read.
+Customers build a basket, choose pickup or delivery, add their details, and the
+site writes the whole order — lines, subtotal, delivery fee, total — into a
+WhatsApp message they send from their own account.
+
+```bash
+npm run check      # merge, order-message totals, session cookie, panel shape
+```
 
 ## Tech
 

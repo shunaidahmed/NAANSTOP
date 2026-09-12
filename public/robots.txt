@@ -1,0 +1,4 @@
+
+# The site manager is not for search engines.
+User-agent: *
+Disallow: /admin/

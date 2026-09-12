@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import { DEFAULT_WA_MESSAGE, DEFAULT_WA_MESSAGE_ES, NAV_LINKS, SITE, waLink } from "../data/site";
+import type { NavLink } from "../cms/content";
 import { useLanguage } from "../i18n/LanguageContext";
-import { WhatsAppIcon } from "./icons";
+import { BagIcon, WhatsAppIcon } from "./icons";
+import { useCart } from "../cart/CartContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("home");
-  const { lang } = useLanguage();
+  const { lang, t, SITE, NAV_LINKS, waLink, waMsg } = useLanguage();
+  const cart = useCart();
 
   useEffect(() => {
     const onScroll = () => {
@@ -36,7 +38,7 @@ export default function Navbar() {
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
-  }, []);
+  }, [NAV_LINKS]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -45,8 +47,7 @@ export default function Navbar() {
     };
   }, [open]);
 
-  const waMsg = lang === "es" ? DEFAULT_WA_MESSAGE_ES : DEFAULT_WA_MESSAGE;
-  const navLabel = (link: typeof NAV_LINKS[number]) => lang === "es" ? link.labelEs : link.label;
+  const navLabel = (link: NavLink) => lang === "es" ? link.labelEs : link.label;
 
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4 transition-colors sm:px-8">
@@ -67,10 +68,16 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <a href={waLink(waMsg)} target="_blank" rel="noopener noreferrer" className="hidden font-btn items-center gap-2 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark md:inline-flex">
             <WhatsAppIcon className="h-4 w-4" />
-            {lang === "es" ? "Pedir Ahora" : "Order Now"}
+            {t.nav.orderNow}
           </a>
+          <button type="button" onClick={() => cart.setOpen(true)} aria-label={`${t.nav.cart}${cart.count ? ` — ${cart.count}` : ""}`} className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 text-neutral-200 transition hover:border-brand hover:text-brand">
+            <BagIcon className="h-5 w-5" />
+            {cart.count > 0 && (
+              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand px-1 text-[10px] font-bold text-white">{cart.count}</span>
+            )}
+          </button>
           <LanguageSwitcher />
-          <button type="button" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"} className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-neutral-700 text-neutral-200 transition hover:border-brand hover:text-brand md:hidden">
+          <button type="button" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-label={open ? t.nav.closeMenu : t.nav.openMenu} className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-neutral-700 text-neutral-200 transition hover:border-brand hover:text-brand md:hidden">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="h-5 w-5" aria-hidden="true">
               {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
             </svg>
@@ -89,7 +96,7 @@ export default function Navbar() {
             <li className="pt-6">
               <a href={waLink(waMsg)} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="flex w-full font-btn items-center justify-center gap-2 rounded-full bg-brand px-5 py-4 text-base font-semibold text-white transition hover:bg-brand-dark">
                 <WhatsAppIcon className="h-5 w-5" />
-                {lang === "es" ? "Pedir por WhatsApp" : "Order on WhatsApp"}
+                {t.nav.orderOnWhatsApp}
               </a>
             </li>
             <li className="pt-2 text-center text-xs tracking-widest text-neutral-500">{SITE.name} · {SITE.subtitle}</li>

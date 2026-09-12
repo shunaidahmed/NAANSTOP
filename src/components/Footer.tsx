@@ -1,13 +1,13 @@
-import { DEFAULT_WA_MESSAGE, DEFAULT_WA_MESSAGE_ES, NAV_LINKS, SITE, waLink } from "../data/site";
+import type { NavLink } from "../cms/content";
 import { useLanguage } from "../i18n/LanguageContext";
+import { fmt } from "../i18n/fmt";
 import { WhatsAppIcon } from "./icons";
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const { lang } = useLanguage();
+  const { lang, t, SITE, NAV_LINKS, waLink, waMsg } = useLanguage();
 
-  const waMsg = lang === "es" ? DEFAULT_WA_MESSAGE_ES : DEFAULT_WA_MESSAGE;
-  const navLabel = (link: typeof NAV_LINKS[number]) => lang === "es" ? link.labelEs : link.label;
+  const navLabel = (link: NavLink) => lang === "es" ? link.labelEs : link.label;
 
   return (
     <footer className="border-t border-white/10 bg-black/20">
@@ -19,7 +19,7 @@ export default function Footer() {
 
         <div className="flex flex-col justify-between gap-8 border-y border-white/10 py-8 sm:flex-row sm:items-center">
           <p className="max-w-sm text-sm leading-relaxed font-body text-neutral-500">
-            {lang === "es" ? "A la parrilla en El Masnou. Envuelto para el camino. Abierto cuando el antojo se pone específico." : "Grilled in El Masnou. Wrapped for the road. Open when the craving gets specific."}
+            {t.footer.description}
           </p>
           <ul className="flex flex-wrap items-center gap-x-8 gap-y-3">
             {NAV_LINKS.map((link) => (
@@ -30,14 +30,14 @@ export default function Footer() {
             <li>
               <a href={waLink(waMsg)} target="_blank" rel="noopener noreferrer" className="inline-flex font-btn items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-brand transition hover:text-white">
                 <WhatsAppIcon className="h-3.5 w-3.5" />
-                {lang === "es" ? "Pedir" : "Order"}
+                {t.footer.order}
               </a>
             </li>
           </ul>
         </div>
 
         <p className="text-center text-xs font-label tracking-wide text-neutral-600">
-          © {year} {SITE.name} {SITE.subtitle}. {lang === "es" ? "Todos los derechos reservados." : "All rights reserved."}
+          {fmt(t.footer.allRightsReserved, { year })}
         </p>
       </div>
     </footer>

@@ -4,12 +4,15 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "npm run gen:defaults && vite",
+    "gen:defaults": "node scripts/gen-defaults.mjs",
+    "build": "npm run gen:defaults && tsc -b && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc -b --noEmit"
+    "typecheck": "tsc -b --noEmit",
+    "check": "node scripts/check.mjs"
   },
   "dependencies": {
+    "@vercel/blob": "^2.8.0",
     "framer-motion": "^11.18.0",
     "gsap": "^3.15.0",
     "react": "^19.1.0",

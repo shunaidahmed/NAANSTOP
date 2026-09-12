@@ -1,0 +1,853 @@
+{
+  "site": {
+    "name": "NAAN STOP",
+    "subtitle": "FRENCH TACOS",
+    "phone": "34624205945",
+    "currency": "EUR",
+    "address": "Passeig Prat de la Riba, 78, 08320 El Masnou, Barcelona, Spain",
+    "hours": [
+      {
+        "days": "Monday – Sunday",
+        "time": "12:00 PM – 12:00 AM",
+        "daysEs": "Lunes – Domingo",
+        "timeEs": "12:00 PM – 12:00 AM"
+      }
+    ],
+    "hoursNote": "Hours may differ on public holidays.",
+    "hoursNoteEs": "Los horarios pueden cambiar en festivos.",
+    "delivery": true,
+    "deliveryFee": 2.5,
+    "minDeliveryOrder": 12,
+    "waMessage": "Hi NAAN STOP! I'd like to place an order.",
+    "waMessageEs": "¡Hola NAAN STOP! Me gustaría hacer un pedido."
+  },
+  "menu": [
+    {
+      "id": "tacos",
+      "label": "French Tacos",
+      "labelEs": "Tacos Franceses",
+      "items": [
+        {
+          "name": "Classic Chicken Taco",
+          "desc": "Grilled tortilla loaded with fries, cheese sauce & crispy chicken.",
+          "nameEs": "Taco Clásico de Pollo",
+          "descEs": "Tortilla a la parrilla cargada de patatas, salsa de queso y pollo crujiente.",
+          "price": 7,
+          "sizes": [
+            {
+              "label": "Medium",
+              "labelEs": "Mediano",
+              "price": 7
+            },
+            {
+              "label": "Large",
+              "labelEs": "Grande",
+              "price": 9
+            }
+          ],
+          "tag": "Bestseller",
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Peri Peri Taco",
+          "desc": "Fiery peri peri chicken, fries & creamy garlic sauce.",
+          "nameEs": "Taco Peri Peri",
+          "descEs": "Pollo peri peri ardiente, patatas y salsa cremosa de ajo.",
+          "price": 7.6,
+          "sizes": [
+            {
+              "label": "Medium",
+              "labelEs": "Mediano",
+              "price": 7.6
+            },
+            {
+              "label": "Large",
+              "labelEs": "Grande",
+              "price": 9.6
+            }
+          ],
+          "tag": "Spicy",
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Loaded Cheese Taco",
+          "desc": "Double cheddar & mozzarella, double the cheese pull.",
+          "nameEs": "Taco Doble Queso",
+          "descEs": "Doble cheddar y mozzarella, doble tirón de queso.",
+          "price": 8,
+          "sizes": [
+            {
+              "label": "Medium",
+              "labelEs": "Mediano",
+              "price": 8
+            },
+            {
+              "label": "Large",
+              "labelEs": "Grande",
+              "price": 10
+            }
+          ],
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Mixed Taco",
+          "desc": "Chicken & beef together with signature sauce.",
+          "nameEs": "Taco Mixto",
+          "descEs": "Pollo y carne juntos con salsa signature.",
+          "price": 8.4,
+          "sizes": [
+            {
+              "label": "Medium",
+              "labelEs": "Mediano",
+              "price": 8.4
+            },
+            {
+              "label": "Large",
+              "labelEs": "Grande",
+              "price": 10.4
+            }
+          ],
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Double Decker Taco",
+          "desc": "Two layers of tortilla, double filling, pure indulgence.",
+          "nameEs": "Taco Doble Capa",
+          "descEs": "Dos capas de tortilla, doble relleno, puro placer.",
+          "price": 9.6,
+          "sizes": [
+            {
+              "label": "Medium",
+              "labelEs": "Mediano",
+              "price": 9.6
+            },
+            {
+              "label": "Large",
+              "labelEs": "Grande",
+              "price": 11.6
+            }
+          ],
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Naan Stop Special",
+          "desc": "Our secret recipe — all our sauces, every filling.",
+          "nameEs": "Especial NAAN STOP",
+          "descEs": "Nuestra receta secreta — todas nuestras salsas, cada relleno.",
+          "price": 9,
+          "sizes": [
+            {
+              "label": "Medium",
+              "labelEs": "Mediano",
+              "price": 9
+            },
+            {
+              "label": "Large",
+              "labelEs": "Grande",
+              "price": 11
+            }
+          ],
+          "tag": "New",
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=900&q=80"
+        }
+      ]
+    },
+    {
+      "id": "burgers",
+      "label": "Burgers",
+      "labelEs": "Hamburguesas",
+      "items": [
+        {
+          "name": "Crispy Zinger Burger",
+          "desc": "Buttermilk fried chicken, lettuce & house mayo.",
+          "nameEs": "Hamburguesa Crispy Zinger",
+          "descEs": "Pollo frito en suero de leche, lechuga y mayonesa casera.",
+          "price": 7,
+          "tag": "Bestseller",
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Classic Chicken Burger",
+          "desc": "Grilled patty, cheddar & smoky BBQ sauce.",
+          "nameEs": "Hamburguesa Clásica de Pollo",
+          "descEs": "Parrilla, cheddar y salsa BBQ ahumada.",
+          "price": 6,
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Peri Peri Chicken Burger",
+          "desc": "Spicy peri marinade, jalapeños & pepper jack.",
+          "nameEs": "Hamburguesa Peri Peri de Pollo",
+          "descEs": "Marinada peri picante, jalapeños y pepper jack.",
+          "price": 7.6,
+          "tag": "Spicy",
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Double Smash Burger",
+          "desc": "Two smashed beef patties, double cheese.",
+          "nameEs": "Hamburguesa Doble Smash",
+          "descEs": "Dos hamburguesas de ternera aplastadas, doble queso.",
+          "price": 9,
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=900&q=80"
+        }
+      ]
+    },
+    {
+      "id": "sides",
+      "label": "Sides",
+      "labelEs": "Acompañamientos",
+      "items": [
+        {
+          "name": "French Fries",
+          "desc": "Golden, crispy, lightly salted.",
+          "nameEs": "Patatas Fritas",
+          "descEs": "Doradas, crujientes, ligeramente saladas.",
+          "price": 3,
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Loaded Fries",
+          "desc": "Fries smothered in cheese sauce, chicken & jalapeños.",
+          "nameEs": "Patatas Cargadas",
+          "descEs": "Patatas bañadas en salsa de queso, pollo y jalapeños.",
+          "price": 5,
+          "tag": "Bestseller",
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Chicken Nuggets",
+          "desc": "6 pieces with dipping sauce.",
+          "nameEs": "Nuggets de Pollo",
+          "descEs": "6 piezas con salsa para mojar.",
+          "price": 5,
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Onion Rings",
+          "desc": "Crunchy battered rings with tangy dip.",
+          "nameEs": "Aros de Cebolla",
+          "descEs": "Aros crujientes empanizados con dip ácido.",
+          "price": 4,
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1639024471283-03518883512d?auto=format&fit=crop&w=900&q=80"
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "label": "Drinks",
+      "labelEs": "Bebidas",
+      "items": [
+        {
+          "name": "Soft Drink",
+          "desc": "Ice-cold canned drink of your choice.",
+          "nameEs": "Refresco",
+          "descEs": "Bebida en lata bien fría de tu elección.",
+          "price": 2,
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Cold Coffee",
+          "desc": "Frothy, chilled & loaded with cream.",
+          "nameEs": "Café Helado",
+          "descEs": "Espumoso, frío y cargado de crema.",
+          "price": 5,
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Chocolate Shake",
+          "desc": "Thick shake topped with chocolate syrup.",
+          "nameEs": "Batido de Chocolate",
+          "descEs": "Batido espeso cubierto con jarabe de chocolate.",
+          "price": 6,
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=900&q=80"
+        },
+        {
+          "name": "Fresh Lime",
+          "desc": "Zesty and refreshing.",
+          "nameEs": "Lima Fresca",
+          "descEs": "Zarzosa y refrescante.",
+          "price": 3,
+          "tagEs": {
+            "Bestseller": "Más Vendido",
+            "Spicy": "Picante",
+            "New": "Nuevo"
+          },
+          "img": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=80"
+        }
+      ]
+    }
+  ],
+  "gallery": {
+    "hero": [
+      {
+        "src": "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=1400&q=85",
+        "alt": "Fresh tacos ready to serve",
+        "kicker": "The house pour",
+        "kickerEs": "El favorito de la casa",
+        "caption": "Melt. Toast. Repeat.",
+        "captionEs": "Derretir. Tostar. Repetir."
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=1400&q=85",
+        "alt": "Loaded burger with fresh toppings",
+        "kicker": "Pressed to order",
+        "kickerEs": "Presionado al pedido",
+        "caption": "Big bite energy.",
+        "captionEs": "Energía de bocado grande."
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=1400&q=85",
+        "alt": "Loaded fries with sauce",
+        "kicker": "Side of serious",
+        "kickerEs": "Lado serio",
+        "caption": "Fries get loud.",
+        "captionEs": "Las patatas se hacen ruido."
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=1400&q=85",
+        "alt": "Iced coffee on a table",
+        "kicker": "Cold pour",
+        "kickerEs": "Derramado frío",
+        "caption": "Cool it down.",
+        "captionEs": "Enfríate."
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=1400&q=85",
+        "alt": "Chocolate shake with cream",
+        "kicker": "Something sweet",
+        "kickerEs": "Algo dulce",
+        "caption": "End on a high.",
+        "captionEs": "Termina en grande."
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1400&q=85",
+        "alt": "Fresh lime drink with mint",
+        "kicker": "Fresh finish",
+        "kickerEs": "Acabado fresco",
+        "caption": "Brighten the table.",
+        "captionEs": "Ilumina la mesa."
+      }
+    ],
+    "about": [
+      {
+        "src": "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=1200&q=80",
+        "alt": "French taco close-up",
+        "kicker": "",
+        "kickerEs": "",
+        "caption": "French taco close-up",
+        "captionEs": "Taco francés cercano"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Chicken burger",
+        "kicker": "",
+        "kickerEs": "",
+        "caption": "Chicken burger",
+        "captionEs": "Hamburguesa de pollo"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=1200&q=80",
+        "alt": "French fries",
+        "kicker": "",
+        "kickerEs": "",
+        "caption": "French fries",
+        "captionEs": "Patatas fritas"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Chocolate shake",
+        "kicker": "",
+        "kickerEs": "",
+        "caption": "Chocolate shake",
+        "captionEs": "Batido de chocolate"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Cheese taco",
+        "kicker": "",
+        "kickerEs": "",
+        "caption": "Cheese taco",
+        "captionEs": "Taco de queso"
+      },
+      {
+        "src": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=1200&q=80",
+        "alt": "Special taco",
+        "kicker": "",
+        "kickerEs": "",
+        "caption": "Special taco",
+        "captionEs": "Taco especial"
+      }
+    ]
+  },
+  "nav": [
+    {
+      "label": "Home",
+      "labelEs": "Inicio",
+      "href": "#home"
+    },
+    {
+      "label": "Menu",
+      "labelEs": "Menú",
+      "href": "#menu"
+    },
+    {
+      "label": "About",
+      "labelEs": "Nosotros",
+      "href": "#about"
+    },
+    {
+      "label": "Contact",
+      "labelEs": "Contacto",
+      "href": "#contact"
+    }
+  ],
+  "t": {
+    "es": {
+      "nav": {
+        "home": "Inicio",
+        "menu": "Menú",
+        "about": "Nosotros",
+        "contact": "Contacto",
+        "orderNow": "Pedir Ahora",
+        "orderOnWhatsApp": "Pedir por WhatsApp",
+        "openMenu": "Abrir menú",
+        "closeMenu": "Cerrar menú",
+        "cart": "Tu pedido"
+      },
+      "hero": {
+        "subtitle": "El Masnou · a la parrilla diaria",
+        "title1": "TACOS",
+        "titleAccent": "FRANCESES",
+        "title2": "DESPUÉS DE MEDIANOCHE.",
+        "description": "Tortillas tostadas, queso derretido, patatas doradas y ese tipo de consuelo nocturno que convierte un solo pedido en un ritual.",
+        "orderOnWhatsApp": "Pedir por WhatsApp",
+        "exploreMenu": "Explorar el menú",
+        "features": [
+          "A la Parrilla",
+          "Hecho a Pedido",
+          "Cargado de Queso"
+        ]
+      },
+      "about": {
+        "kicker": "Hecho cuando golpea el antojo",
+        "heading1": "CRISPY",
+        "heading2": "POR FUERA.",
+        "heading3": "QUESOSO.",
+        "description": "Una pequeña parrilla en El Masnou con mucho apetito. Cada wrap se prensa al pedir, se sella alrededor del relleno y se envía mientras el queso todavía se mueve.",
+        "tagline": "Hecho para la mesa, el coche y el camino a casa",
+        "highlights": {
+          "grilled": "A la Parrilla",
+          "fresh": "Ingredientes Frescos",
+          "flavours": "Grandes Sabores",
+          "quick": "Servicio Rápido",
+          "grilledDesc": "Cada taco se aplasta y tuesta en la parrilla solo después de pedir.",
+          "freshDesc": "Patatas cortadas a mano, salsa de queso real y marinadas hechas en casa a diario.",
+          "flavoursDesc": "Rellenos generosos envueltos en una tortilla crujiente — sin atajos.",
+          "quickDesc": "Caliente y listo rápido, porque los antojos no esperan."
+        }
+      },
+      "menu": {
+        "kicker": "La carta completa",
+        "heading1": "COME",
+        "heading2": "FUERTE.",
+        "description": "Empieza con el wrap que te trajo aquí. Quédate con las patatas, las bebidas frías y las combinaciones que solo tienen sentido después de medianoche.",
+        "allCategory": "Todos",
+        "add": "Añadir",
+        "search": "Buscar en el menú",
+        "clear": "Limpiar",
+        "yourOrder": "Tu pedido",
+        "orderHistory": "Historial de pedidos",
+        "fromTheGrill": "De la parrilla",
+        "close": "Cerrar",
+        "addToOrder": "Añadir al pedido",
+        "sendOrder": "Enviar pedido por WhatsApp",
+        "browseMenu": "Explorar el menú",
+        "emptyOrder": "Tu pedido está vacío",
+        "emptyOrderDesc": "Añade un plato del menú para empezar.",
+        "remove": "Eliminar",
+        "quantity": "Cantidad",
+        "pricePerItem": "Precio por artículo",
+        "noResults": "No hay platos que coincidan con esa búsqueda."
+      },
+      "contact": {
+        "kicker": "Listo cuando tú lo estés",
+        "heading1": "HÁZLO",
+        "heading2": "UNA COMIDA.",
+        "description": "Encuentra la parrilla, consulta los horarios o envía el primer mensaje. Nosotros nos encargamos del resto.",
+        "whatsapp": "WHATSAPP",
+        "tapToChat": "Toca para chatear →",
+        "callTheGrill": "Llamar a la parrilla",
+        "findUs": "ENCUÉNTRANOS",
+        "tapToOpenMaps": "Toca para abrir en Maps →",
+        "openingHours": "HORARIO",
+        "hoursNote": "Los horarios pueden cambiar en festivos.",
+        "message": "Tienes hambre ahora? Envíanos un mensaje por WhatsApp y tendremos tu pedido chisporroteando en la parrilla.",
+        "chatWithUs": "Chatea con nosotros"
+      },
+      "footer": {
+        "description": "A la parrilla en El Masnou. Envuelto para el camino. Abierto cuando el antojo se pone específico.",
+        "allRightsReserved": "© {year} NAAN STOP FRENCH TACOS. Todos los derechos reservados.",
+        "order": "Pedir"
+      },
+      "checkout": {
+        "kicker": "Listo para enviar",
+        "title": "Tu pedido",
+        "empty": "Tu pedido está vacío",
+        "emptyDesc": "Añade un plato del menú para empezar.",
+        "browse": "Explorar el menú",
+        "item": "producto",
+        "items": "productos",
+        "size": "Tamaño",
+        "quantity": "Cantidad",
+        "remove": "Eliminar",
+        "clearCart": "Vaciar pedido",
+        "subtotal": "Subtotal",
+        "deliveryFee": "Envío",
+        "free": "Gratis",
+        "total": "Total",
+        "how": "¿Cómo lo quieres?",
+        "pickup": "Recoger",
+        "delivery": "A domicilio",
+        "yourDetails": "Tus datos",
+        "name": "Nombre",
+        "namePlaceholder": "Tu nombre",
+        "phone": "Teléfono (opcional)",
+        "phonePlaceholder": "Por si hay alguna duda",
+        "address": "Dirección de entrega",
+        "addressPlaceholder": "Calle, número, piso y puerta",
+        "notes": "Notas (opcional)",
+        "notesPlaceholder": "Sin cebolla, extra picante…",
+        "nameRequired": "Escribe tu nombre para continuar.",
+        "addressRequired": "Escribe la dirección de entrega.",
+        "minOrder": "El pedido mínimo a domicilio es {min}. Te faltan {short}.",
+        "send": "Enviar pedido por WhatsApp",
+        "sentTitle": "Tu pedido está en WhatsApp",
+        "sentDesc": "Hemos abierto WhatsApp con tu pedido escrito. Pulsa enviar en el chat — el pedido no llega hasta que lo envíes.",
+        "resend": "Volver a abrir WhatsApp",
+        "newOrder": "Hacer otro pedido",
+        "orderNumber": "Pedido",
+        "addedToOrder": "{name} añadido a tu pedido",
+        "openCart": "Ver tu pedido",
+        "pickupNote": "Recoge en {address}"
+      },
+      "history": {
+        "kicker": "Tu actividad",
+        "title": "Historial de pedidos",
+        "empty": "Sin pedidos aún",
+        "emptyDesc": "Tus pedidos enviados aparecerán aquí.",
+        "orders": "Pedidos",
+        "sent": "Enviados",
+        "completed": "Completados",
+        "statusSent": "Enviado",
+        "statusCompleted": "Completado",
+        "markCompleted": "Marcar completado",
+        "reorder": "Pedir de nuevo",
+        "resend": "Reenviar por WhatsApp",
+        "clear": "Borrar historial",
+        "deviceNote": "Guardado solo en este dispositivo."
+      },
+      "orderMessage": {
+        "heading": "NUEVO PEDIDO",
+        "orderNumber": "Pedido",
+        "type": "Tipo",
+        "pickup": "Recoger en el local",
+        "delivery": "Entrega a domicilio",
+        "itemsHeading": "Productos",
+        "subtotal": "Subtotal",
+        "deliveryFee": "Envío",
+        "total": "TOTAL",
+        "name": "Nombre",
+        "phone": "Teléfono",
+        "address": "Dirección",
+        "notes": "Notas",
+        "footer": "Enviado desde la web de NAAN STOP"
+      },
+      "marquee": [
+        "Tacos Franceses",
+        "Hamburguesas",
+        "Patatas Cargadas",
+        "Batidos",
+        "A la Parrilla Fresca",
+        "Tirada de Queso"
+      ],
+      "floatingWhatsapp": "Chatear con nosotros en WhatsApp",
+      "order": "Pedir"
+    },
+    "en": {
+      "nav": {
+        "home": "Home",
+        "menu": "Menu",
+        "about": "About",
+        "contact": "Contact",
+        "orderNow": "Order Now",
+        "orderOnWhatsApp": "Order on WhatsApp",
+        "openMenu": "Open menu",
+        "closeMenu": "Close menu",
+        "cart": "Your order"
+      },
+      "hero": {
+        "subtitle": "El Masnou · grilled daily",
+        "title1": "FRENCH",
+        "titleAccent": "TACOS",
+        "title2": "AFTER DARK.",
+        "description": "Toasted wraps, molten cheese, golden fries and the kind of late-night comfort that makes one order turn into a ritual.",
+        "orderOnWhatsApp": "Order on WhatsApp",
+        "exploreMenu": "Explore the menu",
+        "features": [
+          "Freshly Grilled",
+          "Made to Order",
+          "Loaded with Cheese"
+        ]
+      },
+      "about": {
+        "kicker": "Made after the craving hits",
+        "heading1": "CRISPY",
+        "heading2": "OUTSIDE.",
+        "heading3": "CHEESY.",
+        "description": "A small grill in El Masnou with a big appetite. Every wrap is pressed to order, sealed around the filling, and sent out while the cheese is still moving.",
+        "tagline": "Built for the table, the car, and the walk home",
+        "highlights": {
+          "grilled": "Grilled to Order",
+          "fresh": "Fresh Ingredients",
+          "flavours": "Big Flavours",
+          "quick": "Quick Service",
+          "grilledDesc": "Every taco is smashed and toasted on the grill only after you order.",
+          "freshDesc": "Hand-cut fries, real cheese sauce and marinades made in-house daily.",
+          "flavoursDesc": "Generous fillings wrapped in a crispy tortilla — no shortcuts.",
+          "quickDesc": "Hot and ready fast, because cravings can't wait."
+        }
+      },
+      "menu": {
+        "kicker": "The full spread",
+        "heading1": "EAT",
+        "heading2": "LOUD.",
+        "description": "Start with the wrap that brought you here. Stay for the fries, the cold drinks, and the combinations that only make sense after dark.",
+        "allCategory": "All",
+        "add": "Add",
+        "search": "Search the menu",
+        "clear": "Clear",
+        "yourOrder": "Your order",
+        "orderHistory": "Order history",
+        "fromTheGrill": "From the grill",
+        "close": "Close",
+        "addToOrder": "Add to order",
+        "sendOrder": "Send order on WhatsApp",
+        "browseMenu": "Browse menu",
+        "emptyOrder": "Your order is empty",
+        "emptyOrderDesc": "Add a dish from the menu to get started.",
+        "remove": "Remove",
+        "quantity": "Quantity",
+        "pricePerItem": "Price shown per item",
+        "noResults": "No dishes match that search."
+      },
+      "contact": {
+        "kicker": "Ready when you are",
+        "heading1": "MAKE IT",
+        "heading2": "A MEAL.",
+        "description": "Find the grill, check the hours, or send the first message. We will take it from there.",
+        "whatsapp": "WHATSAPP",
+        "tapToChat": "Tap to chat →",
+        "callTheGrill": "Call the grill",
+        "findUs": "FIND US",
+        "tapToOpenMaps": "Tap to open in Maps →",
+        "openingHours": "OPENING HOURS",
+        "hoursNote": "Hours may differ on public holidays.",
+        "message": "Hungry right now? Send us a message on WhatsApp and we'll have your order sizzling on the grill.",
+        "chatWithUs": "Chat with us"
+      },
+      "footer": {
+        "description": "Grilled in El Masnou. Wrapped for the road. Open when the craving gets specific.",
+        "allRightsReserved": "© {year} NAAN STOP FRENCH TACOS. All rights reserved.",
+        "order": "Order"
+      },
+      "checkout": {
+        "kicker": "Ready to send",
+        "title": "Your order",
+        "empty": "Your order is empty",
+        "emptyDesc": "Add a dish from the menu to get started.",
+        "browse": "Browse the menu",
+        "item": "item",
+        "items": "items",
+        "size": "Size",
+        "quantity": "Quantity",
+        "remove": "Remove",
+        "clearCart": "Empty the order",
+        "subtotal": "Subtotal",
+        "deliveryFee": "Delivery",
+        "free": "Free",
+        "total": "Total",
+        "how": "How do you want it?",
+        "pickup": "Pickup",
+        "delivery": "Delivery",
+        "yourDetails": "Your details",
+        "name": "Name",
+        "namePlaceholder": "Your name",
+        "phone": "Phone (optional)",
+        "phonePlaceholder": "In case we need to check something",
+        "address": "Delivery address",
+        "addressPlaceholder": "Street, number, floor and door",
+        "notes": "Notes (optional)",
+        "notesPlaceholder": "No onion, extra spicy…",
+        "nameRequired": "Add your name to continue.",
+        "addressRequired": "Add the delivery address.",
+        "minOrder": "The minimum delivery order is {min}. You are {short} short.",
+        "send": "Send order on WhatsApp",
+        "sentTitle": "Your order is in WhatsApp",
+        "sentDesc": "We opened WhatsApp with your order written out. Press send in the chat — it does not reach us until you send it.",
+        "resend": "Open WhatsApp again",
+        "newOrder": "Start another order",
+        "orderNumber": "Order",
+        "addedToOrder": "{name} added to your order",
+        "openCart": "View your order",
+        "pickupNote": "Collect from {address}"
+      },
+      "history": {
+        "kicker": "Your activity",
+        "title": "Order history",
+        "empty": "No orders yet",
+        "emptyDesc": "Orders you send will show up here.",
+        "orders": "Orders",
+        "sent": "Sent",
+        "completed": "Completed",
+        "statusSent": "Sent",
+        "statusCompleted": "Completed",
+        "markCompleted": "Mark completed",
+        "reorder": "Order again",
+        "resend": "Resend on WhatsApp",
+        "clear": "Clear history",
+        "deviceNote": "Kept on this device only."
+      },
+      "orderMessage": {
+        "heading": "NEW ORDER",
+        "orderNumber": "Order",
+        "type": "Type",
+        "pickup": "Pickup at the shop",
+        "delivery": "Delivery",
+        "itemsHeading": "Items",
+        "subtotal": "Subtotal",
+        "deliveryFee": "Delivery",
+        "total": "TOTAL",
+        "name": "Name",
+        "phone": "Phone",
+        "address": "Address",
+        "notes": "Notes",
+        "footer": "Sent from the NAAN STOP website"
+      },
+      "marquee": [
+        "French Tacos",
+        "Burgers",
+        "Loaded Fries",
+        "Shakes",
+        "Grilled Fresh",
+        "Cheese Pull"
+      ],
+      "floatingWhatsapp": "Chat with us on WhatsApp",
+      "order": "Order"
+    }
+  },
+  "seo": {
+    "title": "NAAN STOP FRENCH TACOS - El Masnou, Barcelona",
+    "description": "French tacos, burgers and loaded fries grilled to order in El Masnou. Order on WhatsApp.",
+    "ogImage": "/logo.png"
+  },
+  "tags": {
+    "gtm": "",
+    "ga4": "",
+    "adsId": "",
+    "adsLabel": "",
+    "metaPixel": "",
+    "tiktok": "",
+    "linkedin": "",
+    "clarity": "",
+    "verification": "",
+    "consent": "eu",
+    "headCode": "",
+    "bodyCode": ""
+  }
+}
