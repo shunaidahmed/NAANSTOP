@@ -1,48 +1,13 @@
 @import "tailwindcss";
 
 /* ── Brand type ─────────────────────────────────────────────────
-   Supra Classic is the face in the logo — Font Squirrel's Matcherator found
-   it and the full family is in fonts/. It carries the headings and the body
-   copy. Gilroy carries the interface: dish names, nav, buttons, prices.
+   Supra Classic is the face in the logo, but every file of it in brand/fonts/
+   is a DEMO that swaps 32 characters — 4, +, and every Spanish accent among
+   them — for a "DEMO" badge. It is out until the licensed version arrives.
 
-   Gilroy still ships only Bold and Black; the sixteen other files in fonts/
-   are 0-byte stubs. That is why body copy is Supra Classic Book rather than
-   Gilroy Regular — swap --font-body when the missing weights turn up.      */
-@font-face {
-  font-family: "Supra Classic";
-  src: url("/fonts/supra-400.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Supra Classic";
-  src: url("/fonts/supra-500.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Supra Classic";
-  src: url("/fonts/supra-700.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Supra Classic";
-  src: url("/fonts/supra-900.woff2") format("woff2");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Supra Classic";
-  src: url("/fonts/supra-900-italic.woff2") format("woff2");
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
+   So Gilroy carries headings and the interface, and Manrope carries body copy,
+   because Gilroy itself ships only Bold and Black here. `npm run brand` now
+   refuses to convert any font whose glyphs are sabotaged like that.          */
 @font-face {
   font-family: "Gilroy";
   src: url("/fonts/gilroy-700.woff2") format("woff2");
@@ -52,9 +17,23 @@
 }
 @font-face {
   font-family: "Gilroy";
+  src: url("/fonts/gilroy-700-italic.woff2") format("woff2");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
   src: url("/fonts/gilroy-900.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/gilroy-900-italic.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -73,11 +52,11 @@
   --color-faint: #877d7c;
   --color-line: rgba(255, 255, 255, 0.12);
 
-  /* Headings and body: the logo's own face. */
-  --font-display: "Supra Classic", "Arial Black", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Supra Classic", ui-sans-serif, system-ui, sans-serif;
-  /* Interface: dish names, nav, buttons, prices, labels. */
-  --font-ui: "Gilroy", "Supra Classic", ui-sans-serif, system-ui, sans-serif;
+  /* Headings and interface. */
+  --font-display: "Gilroy", "Arial Black", ui-sans-serif, system-ui, sans-serif;
+  --font-ui: var(--font-display);
+  /* Body copy needs a 400 weight, which Gilroy does not have here. */
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
 
   --font-hero: var(--font-display);
   --font-heading: var(--font-display);

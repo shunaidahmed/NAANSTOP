@@ -9,11 +9,14 @@
  * white behind the badge before it is written out, and the result is asserted
  * to actually contain white pixels.
  *
- * Supra Classic is the face in the logo and carries headings and body copy.
- * Gilroy carries the interface. Gilroy currently ships only Bold and Black —
- * the other sixteen files in brand/fonts/ are 0-byte stubs — so the entries
- * below are commented out rather than deleted: drop the full family in and
- * uncomment them, then point --font-body at Gilroy in src/index.css.
+ * Fonts: two families are in brand/fonts/ and neither is usable in full.
+ *   - Supra Classic (the face in the logo) is a DEMO: all twenty files replace
+ *     32 characters with a "DEMO" badge, including 4, +, and every Spanish
+ *     accent. Unusable until the licensed version is bought.
+ *   - Gilroy has bytes only in Bold and Black; the other sixteen files are
+ *     0-byte stubs.
+ * So Gilroy carries headings and the interface, and body copy falls back to
+ * Manrope. Each conversion is checked for sabotaged glyphs before it runs.
  *
  * Needs fonttools: `pip install fonttools brotli`.
  */
@@ -21,21 +24,43 @@ import { execFileSync } from "node:child_process";
 import { mkdir, stat } from "node:fs/promises";
 
 const FACES = [
-  ["brand/fonts/fonnts.com-SupraClassic-Book.otf", "supra-400.woff2"],
-  ["brand/fonts/fonnts.com-SupraClassic-Medium.otf", "supra-500.woff2"],
-  ["brand/fonts/fonnts.com-SupraClassic-Bold.otf", "supra-700.woff2"],
-  ["brand/fonts/fonnts.com-SupraClassic-Black.otf", "supra-900.woff2"],
-  ["brand/fonts/fonnts.com-SupraClassic-Blacktalic.otf", "supra-900-italic.woff2"],
   ["brand/fonts/Gilroy-Bold.ttf", "gilroy-700.woff2"],
+  ["brand/fonts/Gilroy-BoldItalic.ttf", "gilroy-700-italic.woff2"],
   ["brand/fonts/Gilroy-Black.ttf", "gilroy-900.woff2"],
+  ["brand/fonts/Gilroy-BlackItalic.ttf", "gilroy-900-italic.woff2"],
+  // Waiting on files that are not usable yet — see the note above.
   // ["brand/fonts/Gilroy-Regular.ttf", "gilroy-400.woff2"],
   // ["brand/fonts/Gilroy-Medium.ttf", "gilroy-500.woff2"],
+  // ["brand/fonts/fonnts.com-SupraClassic-Book.otf", "supra-400.woff2"],
+  // ["brand/fonts/fonnts.com-SupraClassic-Black.otf", "supra-900.woff2"],
 ];
 
 const PY = `
 import sys
 from fontTools.ttLib import TTFont
+from PIL import Image, ImageDraw, ImageFont
+
 src, out = sys.argv[1], sys.argv[2]
+
+# Trial fonts replace whole swathes of the character set with a "DEMO" badge.
+# The Supra Classic drop did exactly that to 32 characters — including 4, +,
+# and every Spanish accent — and it shipped before anyone noticed. Any font
+# where distinct characters rasterise identically does not get converted.
+probe = "0123456789+-!?aeiouAEIOU" + "áéíóúñ¿"
+face = ImageFont.truetype(src, 44)
+seen = {}
+for ch in probe:
+    im = Image.new("L", (80, 80), 255)
+    ImageDraw.Draw(im).text((8, 8), ch, font=face, fill=0)
+    seen.setdefault(im.tobytes(), []).append(ch)
+clashes = [g for g in seen.values() if len(g) > 1]
+if clashes:
+    raise SystemExit(
+        f"{src} draws the same glyph for different characters: "
+        + ", ".join("".join(g) for g in clashes)
+        + " — this looks like a trial version, not the licensed font."
+    )
+
 f = TTFont(src)
 f.flavor = "woff2"
 f.save(out)

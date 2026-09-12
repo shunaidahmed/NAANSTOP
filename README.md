@@ -47,17 +47,21 @@ analytics, with draft → publish. Setup and day-to-day use:
 
 ## Look and feel
 
-Type is all self-hosted in `public/fonts/` — no Google Fonts request.
-
 | Role | Face |
 |---|---|
-| Headings, hero, body copy | **Supra Classic** — the face in the logo |
-| Dish names, nav, buttons, prices, labels | **Gilroy** |
+| Headings, hero, dish names, nav, buttons, prices | **Gilroy** (self-hosted, `public/fonts/`) |
+| Body copy | **Manrope** (Google Fonts) |
 
-Both families live in `fonts/` and are converted to woff2 by hand. Gilroy
-still ships only Bold and Black — the other sixteen files there are 0-byte
-stubs — which is why body copy is Supra Classic Book and not Gilroy Regular.
-Drop the full Gilroy in and point `--font-body` at it.
+Neither brand family in `brand/fonts/` is usable in full yet:
+
+- **Supra Classic** — the face in the logo — is a **DEMO**. All twenty files
+  replace 32 characters with a "DEMO" badge, including `4`, `+`, `!`, `€` and
+  every Spanish accent. Needs the licensed version.
+- **Gilroy** has bytes only in Bold and Black; the other sixteen files in that
+  folder are 0-byte stubs, so body copy falls back to Manrope.
+
+`npm run brand` refuses to convert any font that draws the same glyph for
+different characters, so a trial font cannot reach the site again.
 
 Dark is the default theme; the toggle in the header switches to light and the
 choice is remembered. Colours are semantic tokens in `src/index.css`
