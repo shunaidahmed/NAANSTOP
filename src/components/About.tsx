@@ -33,17 +33,17 @@ export default function About() {
   const gallery = GALLERY.about;
 
   return (
-    <section id="about" ref={sectionRef} className="border-y border-white/10 bg-black/10 px-4 py-32 sm:px-8 md:py-48 lg:px-12">
+    <section id="about" ref={sectionRef} className="border-y border-line bg-surface-2 px-4 py-32 sm:px-8 md:py-48 lg:px-12">
       <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
         <div className="story-pin" data-story-copy>
           <p className="editorial-kicker font-label">{t.about.kicker}</p>
-          <h2 className="editorial-heading mt-6 max-w-xl text-6xl text-white sm:text-7xl font-heading">
+          <h2 className="editorial-heading mt-6 max-w-xl text-6xl text-fg sm:text-7xl font-heading">
             {t.about.heading1}<br />
             <span className="text-brand">{t.about.heading2}</span><br />
             {t.about.heading3}
           </h2>
-          <p className="mt-8 max-w-md text-base leading-relaxed text-neutral-400 font-body">{t.about.description}</p>
-          <div className="mt-12 flex items-center gap-4 text-xs font-label uppercase tracking-[0.2em] text-neutral-500">
+          <p className="mt-8 max-w-md text-base leading-relaxed text-muted font-body">{t.about.description}</p>
+          <div className="mt-12 flex items-center gap-4 text-xs font-label uppercase tracking-[0.2em] text-faint">
             <span className="h-px w-12 bg-brand" />
             {t.about.tagline}
           </div>
@@ -56,8 +56,8 @@ export default function About() {
               <img src={slide.src} alt={slide.alt} loading="lazy" decoding="async" width={1200} height={800} className="h-full w-full object-cover" />
               <div className="image-wash absolute inset-0" />
               <figcaption className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3">
-                <span className="font-heading text-2xl leading-tight text-white">{lang === "es" ? slide.captionEs : slide.caption}</span>
-                <span className="font-mono text-xs text-white/55">{String(index + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}</span>
+                <span className="on-photo font-heading text-2xl leading-tight">{lang === "es" ? slide.captionEs : slide.caption}</span>
+                <span className="on-photo-dim font-mono text-xs">{String(index + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}</span>
               </figcaption>
             </figure>
           ))}
@@ -66,8 +66,8 @@ export default function About() {
             {highlights.map((highlight) => (
               <article key={highlight.title} className="cafe-card rounded-2xl p-6">
                 <FlameIcon className="h-5 w-5 text-brand" />
-                <h3 className="mt-8 font-heading text-xl text-white">{highlight.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-400 font-body">{highlight.desc}</p>
+                <h3 className="mt-8 font-heading text-xl text-fg">{highlight.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted font-body">{highlight.desc}</p>
               </article>
             ))}
           </div>

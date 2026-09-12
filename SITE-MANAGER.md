@@ -89,6 +89,12 @@ it is not visible in this panel.
 
 ---
 
+## Light and dark
+
+The header has a sun/moon toggle. Dark is what visitors see first; whichever
+one they pick is remembered on their own device. There is nothing to set here —
+both themes are built from the same content.
+
 ## Images
 
 Upload from **Media**, or straight from the photo field on any dish.

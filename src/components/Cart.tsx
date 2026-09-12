@@ -67,11 +67,11 @@ function Field({
   invalid?: boolean;
 }) {
   const shared =
-    "mt-1.5 w-full rounded-xl border bg-black/20 px-4 py-3 text-sm text-white outline-none transition placeholder:text-neutral-600 focus:border-brand " +
-    (invalid ? "border-red-500" : "border-white/12");
+    "mt-1.5 w-full rounded-xl border bg-surface-2 px-4 py-3 text-sm text-fg outline-none transition placeholder:text-faint focus:border-brand " +
+    (invalid ? "border-red-500" : "border-line");
   return (
     <label className="block">
-      <span className="font-label text-[11px] uppercase tracking-wider text-neutral-400">
+      <span className="font-label text-[11px] uppercase tracking-wider text-muted">
         {label}
         {required && <span className="text-brand"> *</span>}
       </span>
@@ -125,10 +125,10 @@ function CheckoutFields({ touched }: { touched: boolean }) {
   const { isDelivery, nameMissing, addressMissing } = useCheckout();
 
   return (
-    <div className="space-y-5 border-t border-white/10 pt-6">
+    <div className="space-y-5 border-t border-line pt-6">
       {SITE.delivery && (
         <div>
-          <p className="font-label text-[11px] uppercase tracking-wider text-neutral-400">{c.how}</p>
+          <p className="font-label text-[11px] uppercase tracking-wider text-muted">{c.how}</p>
           <div role="radiogroup" aria-label={c.how} className="mt-2 grid grid-cols-2 gap-2">
             {(["pickup", "delivery"] as const).map((mode) => (
               <button
@@ -140,7 +140,7 @@ function CheckoutFields({ touched }: { touched: boolean }) {
                 className={`rounded-xl border px-4 py-3 text-xs font-semibold uppercase tracking-wider transition ${
                   cart.details.fulfilment === mode
                     ? "border-brand bg-brand text-white"
-                    : "border-white/12 text-neutral-300 hover:border-brand hover:text-brand"
+                    : "border-line text-muted hover:border-brand hover:text-brand"
                 }`}
               >
                 {mode === "pickup" ? c.pickup : c.delivery}
@@ -148,7 +148,7 @@ function CheckoutFields({ touched }: { touched: boolean }) {
             ))}
           </div>
           {!isDelivery && (
-            <p className="mt-2 text-xs leading-relaxed text-neutral-500">
+            <p className="mt-2 text-xs leading-relaxed text-faint">
               {fmt(c.pickupNote, { address: SITE.address })}
             </p>
           )}
@@ -156,7 +156,7 @@ function CheckoutFields({ touched }: { touched: boolean }) {
       )}
 
       <div className="space-y-3">
-        <p className="font-label text-[11px] uppercase tracking-wider text-neutral-400">{c.yourDetails}</p>
+        <p className="font-label text-[11px] uppercase tracking-wider text-muted">{c.yourDetails}</p>
         <Field
           label={c.name}
           required
@@ -261,19 +261,19 @@ function CheckoutSummary({
 
   return (
     <div className="space-y-4">
-      <dl className="space-y-2 border-t border-white/10 pt-4 text-sm">
+      <dl className="space-y-2 border-t border-line pt-4 text-sm">
         <div className="flex justify-between">
-          <dt className="text-neutral-400">{c.subtotal}</dt>
-          <dd className="text-white">{cart.money(cart.subtotal)}</dd>
+          <dt className="text-muted">{c.subtotal}</dt>
+          <dd className="text-fg">{cart.money(cart.subtotal)}</dd>
         </div>
         {isDelivery && (
           <div className="flex justify-between">
-            <dt className="text-neutral-400">{c.deliveryFee}</dt>
-            <dd className="text-white">{cart.deliveryFee > 0 ? cart.money(cart.deliveryFee) : c.free}</dd>
+            <dt className="text-muted">{c.deliveryFee}</dt>
+            <dd className="text-fg">{cart.deliveryFee > 0 ? cart.money(cart.deliveryFee) : c.free}</dd>
           </div>
         )}
-        <div className="flex justify-between border-t border-white/10 pt-2 text-base">
-          <dt className="font-semibold text-white">{c.total}</dt>
+        <div className="flex justify-between border-t border-line pt-2 text-base">
+          <dt className="font-semibold text-fg">{c.total}</dt>
           <dd className="font-price font-bold text-brand">{cart.money(cart.total)}</dd>
         </div>
       </dl>
@@ -295,7 +295,7 @@ function CheckoutSummary({
         <button
           type="button"
           onClick={() => setTouched(true)}
-          className="font-btn inline-flex w-full items-center justify-center gap-2 rounded-full bg-neutral-800 px-6 py-4 text-sm font-semibold uppercase tracking-wider text-neutral-500"
+          className="font-btn inline-flex w-full items-center justify-center gap-2 rounded-full bg-surface-2 px-6 py-4 text-sm font-semibold uppercase tracking-wider text-faint"
         >
           <WhatsAppIcon className="h-4 w-4" />
           {c.send}
@@ -331,11 +331,11 @@ function CartDrawer({ onHistory }: { onHistory: () => void }) {
 
   return (
     <Drawer onClose={() => cart.setOpen(false)} label={c.title}>
-      <div className="flex shrink-0 items-start justify-between border-b border-white/10 pb-5">
+      <div className="flex shrink-0 items-start justify-between border-b border-line pb-5">
         <div>
           <p className="editorial-kicker font-label">{c.kicker}</p>
-          <h3 className="mt-2 font-heading text-3xl text-white">{c.title}</h3>
-          <p className="mt-1 text-xs font-label text-neutral-500">
+          <h3 className="mt-2 font-heading text-3xl text-fg">{c.title}</h3>
+          <p className="mt-1 text-xs font-label text-faint">
             {cart.count} {cart.count === 1 ? c.item : c.items}
           </p>
         </div>
@@ -345,7 +345,7 @@ function CartDrawer({ onHistory }: { onHistory: () => void }) {
             onClick={onHistory}
             aria-label={t.history.title}
             title={t.history.title}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-neutral-400 transition hover:border-brand hover:text-brand"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line text-muted transition hover:border-brand hover:text-brand"
           >
             <ClipboardIcon className="h-4 w-4" />
           </button>
@@ -363,26 +363,26 @@ function CartDrawer({ onHistory }: { onHistory: () => void }) {
       <div className="cart-items flex-1 overflow-y-auto py-6">
         {sent ? (
           <div className="space-y-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-6 text-center">
-            <p className="font-heading text-2xl text-white">{c.sentTitle}</p>
+            <p className="font-heading text-2xl text-fg">{c.sentTitle}</p>
             <p className="font-mono text-xs text-emerald-300">
               {c.orderNumber} {sent.order.id}
             </p>
-            <p className="text-sm leading-relaxed text-neutral-400">{c.sentDesc}</p>
+            <p className="text-sm leading-relaxed text-muted">{c.sentDesc}</p>
           </div>
         ) : cart.lines.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-white/15 p-6 text-center">
-            <p className="font-heading text-xl text-white">{c.empty}</p>
-            <p className="mt-2 text-sm font-body text-neutral-500">{c.emptyDesc}</p>
+          <div className="rounded-2xl border border-dashed border-line p-6 text-center">
+            <p className="font-heading text-xl text-fg">{c.empty}</p>
+            <p className="mt-2 text-sm font-body text-faint">{c.emptyDesc}</p>
           </div>
         ) : (
           <div className="space-y-3">
             {cart.lines.map((line) => (
-              <div key={line.id} className="cart-line rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <div key={line.id} className="cart-line rounded-2xl border border-line bg-surface-2 p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="font-menu-name text-base leading-tight text-white">{label(line)}</p>
+                    <p className="font-menu-name text-base leading-tight text-fg">{label(line)}</p>
                     {line.size && (
-                      <p className="mt-0.5 text-[11px] uppercase tracking-wider text-neutral-500">
+                      <p className="mt-0.5 text-[11px] uppercase tracking-wider text-faint">
                         {c.size}: {sizeLabel(line)}
                       </p>
                     )}
@@ -392,12 +392,12 @@ function CartDrawer({ onHistory }: { onHistory: () => void }) {
                     type="button"
                     onClick={() => cart.remove(line.id)}
                     aria-label={`${c.remove} — ${label(line)}`}
-                    className="font-btn text-xs text-neutral-600 transition hover:text-red-300"
+                    className="font-btn text-xs text-faint transition hover:text-red-300"
                   >
                     {c.remove}
                   </button>
                 </div>
-                <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-3">
+                <div className="mt-4 flex items-center justify-between border-t border-line pt-3">
                   <div className="flex items-center gap-3">
                     <button
                       type="button"
@@ -407,7 +407,7 @@ function CartDrawer({ onHistory }: { onHistory: () => void }) {
                     >
                       −
                     </button>
-                    <span className="w-5 text-center text-sm font-semibold text-white">{line.quantity}</span>
+                    <span className="w-5 text-center text-sm font-semibold text-fg">{line.quantity}</span>
                     <button
                       type="button"
                       onClick={() => cart.setQuantity(line.id, line.quantity + 1)}
@@ -417,7 +417,7 @@ function CartDrawer({ onHistory }: { onHistory: () => void }) {
                       +
                     </button>
                   </div>
-                  <span className="font-price text-sm font-bold text-white">
+                  <span className="font-price text-sm font-bold text-fg">
                     {cart.money(line.unitPrice * line.quantity)}
                   </span>
                 </div>
@@ -426,7 +426,7 @@ function CartDrawer({ onHistory }: { onHistory: () => void }) {
             <button
               type="button"
               onClick={cart.clear}
-              className="text-xs uppercase tracking-wider text-neutral-600 transition hover:text-red-300"
+              className="text-xs uppercase tracking-wider text-faint transition hover:text-red-300"
             >
               {c.clearCart}
             </button>
@@ -435,13 +435,13 @@ function CartDrawer({ onHistory }: { onHistory: () => void }) {
         )}
       </div>
 
-      <div className="shrink-0 border-t border-white/10 pt-5">
+      <div className="shrink-0 border-t border-line pt-5">
         {sent ? (
           <div className="grid gap-2">
             <button
               type="button"
               onClick={() => window.open(waLink(sent.order.message), "_blank", "noopener")}
-              className="font-btn inline-flex w-full justify-center rounded-full border border-white/15 px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-neutral-300 transition hover:border-brand hover:text-brand"
+              className="font-btn inline-flex w-full justify-center rounded-full border border-line px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-muted transition hover:border-brand hover:text-brand"
             >
               {c.resend}
             </button>
@@ -466,7 +466,7 @@ function CartDrawer({ onHistory }: { onHistory: () => void }) {
               cart.setOpen(false);
               document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="font-btn inline-flex w-full justify-center rounded-full border border-white/15 px-6 py-4 text-sm font-semibold uppercase tracking-wider text-neutral-400 transition hover:border-brand hover:text-brand"
+            className="font-btn inline-flex w-full justify-center rounded-full border border-line px-6 py-4 text-sm font-semibold uppercase tracking-wider text-muted transition hover:border-brand hover:text-brand"
           >
             {c.browse}
           </button>
@@ -488,42 +488,42 @@ function HistoryDrawer({ onClose }: { onClose: () => void }) {
 
   return (
     <Drawer onClose={onClose} label={hh.title}>
-      <div className="flex shrink-0 items-start justify-between border-b border-white/10 pb-5">
+      <div className="flex shrink-0 items-start justify-between border-b border-line pb-5">
         <div>
           <p className="editorial-kicker font-label">{hh.kicker}</p>
-          <h3 className="mt-2 font-heading text-3xl text-white">{hh.title}</h3>
+          <h3 className="mt-2 font-heading text-3xl text-fg">{hh.title}</h3>
         </div>
         <button type="button" onClick={onClose} aria-label={t.menu.close} className="cart-close">
           ×
         </button>
       </div>
 
-      <div className="grid shrink-0 grid-cols-3 gap-2 border-b border-white/10 py-5 text-center">
+      <div className="grid shrink-0 grid-cols-3 gap-2 border-b border-line py-5 text-center">
         {[
-          [cart.history.length, hh.orders, "text-white"],
+          [cart.history.length, hh.orders, "text-fg"],
           [sentCount, hh.sent, "text-brand"],
-          [doneCount, hh.completed, "text-white"],
+          [doneCount, hh.completed, "text-fg"],
         ].map(([value, label, tone]) => (
           <div key={String(label)}>
             <p className={`font-heading text-2xl ${tone}`}>{value}</p>
-            <p className="text-[10px] font-label uppercase tracking-wider text-neutral-500">{label}</p>
+            <p className="text-[10px] font-label uppercase tracking-wider text-faint">{label}</p>
           </div>
         ))}
       </div>
 
       <div className="cart-items flex-1 space-y-3 overflow-y-auto py-5">
         {cart.history.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-white/15 p-6 text-center">
-            <p className="font-heading text-xl text-white">{hh.empty}</p>
-            <p className="mt-2 text-sm font-body text-neutral-500">{hh.emptyDesc}</p>
+          <div className="rounded-2xl border border-dashed border-line p-6 text-center">
+            <p className="font-heading text-xl text-fg">{hh.empty}</p>
+            <p className="mt-2 text-sm font-body text-faint">{hh.emptyDesc}</p>
           </div>
         ) : (
           cart.history.map((order) => (
-            <div key={order.id} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <div key={order.id} className="rounded-2xl border border-line bg-surface-2 p-4">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="font-mono text-xs text-neutral-500">{order.id}</p>
-                  <p className="mt-1 text-xs text-neutral-500">
+                  <p className="font-mono text-xs text-faint">{order.id}</p>
+                  <p className="mt-1 text-xs text-faint">
                     {new Date(order.createdAt).toLocaleString(lang === "es" ? "es-ES" : "en-IE")}
                   </p>
                 </div>
@@ -535,17 +535,17 @@ function HistoryDrawer({ onClose }: { onClose: () => void }) {
                   {order.status === "sent" ? hh.statusSent : hh.statusCompleted}
                 </span>
               </div>
-              <p className="mt-3 text-sm text-neutral-300">
+              <p className="mt-3 text-sm text-muted">
                 {order.lines
                   .map((line) => `${line.quantity}× ${lang === "es" ? line.nameEs ?? line.name : line.name}`)
                   .join(", ")}
               </p>
-              <p className="mt-1 font-price text-sm font-bold text-white">{cart.money(order.total)}</p>
+              <p className="mt-1 font-price text-sm font-bold text-fg">{cart.money(order.total)}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <button
                   type="button"
                   onClick={() => window.open(waLink(order.message), "_blank", "noopener")}
-                  className="border border-white/15 px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-neutral-400 transition hover:border-brand hover:text-brand"
+                  className="border border-line px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-muted transition hover:border-brand hover:text-brand"
                 >
                   {hh.resend}
                 </button>
@@ -553,7 +553,7 @@ function HistoryDrawer({ onClose }: { onClose: () => void }) {
                   <button
                     type="button"
                     onClick={() => cart.setOrderStatus(order.id, "completed")}
-                    className="border border-white/15 px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-neutral-400 transition hover:border-emerald-400 hover:text-emerald-300"
+                    className="border border-line px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-muted transition hover:border-emerald-400 hover:text-emerald-300"
                   >
                     {hh.markCompleted}
                   </button>
@@ -564,13 +564,13 @@ function HistoryDrawer({ onClose }: { onClose: () => void }) {
         )}
       </div>
 
-      <div className="shrink-0 border-t border-white/10 pt-4">
-        <p className="text-[11px] text-neutral-600">{hh.deviceNote}</p>
+      <div className="shrink-0 border-t border-line pt-4">
+        <p className="text-[11px] text-faint">{hh.deviceNote}</p>
         {cart.history.length > 0 && (
           <button
             type="button"
             onClick={cart.clearHistory}
-            className="mt-2 text-xs uppercase tracking-wider text-neutral-600 transition hover:text-red-300"
+            className="mt-2 text-xs uppercase tracking-wider text-faint transition hover:text-red-300"
           >
             {hh.clear}
           </button>
@@ -617,7 +617,7 @@ export default function Cart() {
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
             onClick={() => cart.setOpen(true)}
             aria-label={`${t.checkout.openCart} — ${cart.count}`}
-            className="fixed bottom-24 right-5 z-50 flex h-14 items-center gap-2 rounded-full bg-white px-5 text-neutral-900 shadow-2xl transition hover:scale-105"
+            className="fixed bottom-24 right-5 z-50 flex h-14 items-center gap-2 rounded-full border border-line bg-surface px-5 text-fg shadow-2xl transition hover:scale-105"
           >
             <BagIcon className="h-5 w-5" />
             <span className="font-price text-sm font-bold">{cart.money(cart.subtotal)}</span>
@@ -642,7 +642,7 @@ export default function Cart() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             role="status"
-            className="cart-notice fixed bottom-6 left-1/2 z-[80] -translate-x-1/2 rounded-full border border-brand/40 bg-neutral-950/95 px-5 py-3 text-xs font-semibold text-white shadow-2xl"
+            className="cart-notice fixed bottom-6 left-1/2 z-[80] -translate-x-1/2 rounded-full border border-brand/40 bg-surface px-5 py-3 text-xs font-semibold text-fg shadow-2xl"
           >
             {fmt(t.checkout.addedToOrder, { name: cart.notice })}
           </motion.div>

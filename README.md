@@ -31,6 +31,20 @@ scripts/check.mjs      `npm run check` — merge + session-cookie checks
 Storage is Vercel Blob. Published content overlays the files below, so the site
 still renders if the API is unreachable.
 
+## Look and feel
+
+Type is **Gilroy** (self-hosted in `public/fonts/`, converted from the `fonts/`
+folder in this repo) for display and UI, **Manrope** for body copy. Only
+Gilroy Bold and Black carry bytes in that folder — the rest of the family
+downloaded as 0-byte stubs — so the hierarchy is built from those two weights
+plus case and slant.
+
+Dark is the default theme; the toggle in the header switches to light and the
+choice is remembered. Colours are semantic tokens in `src/index.css`
+(`--color-bg`, `--color-fg`, `--color-muted`, `--color-line`, …) redeclared
+under `html[data-theme="light"]`, so components use `text-muted` or
+`border-line` and follow the theme without knowing which one is on.
+
 ## Customize the shipped defaults — edit `src/data/site.ts`
 
 Everything about your business lives in this one file:

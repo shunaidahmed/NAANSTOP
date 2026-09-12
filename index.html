@@ -10,6 +10,16 @@
       content="NAAN STOP FRENCH TACOS — Tacos franceses, hamburguesas y más. Pedir ahora por WhatsApp."
     />
     <meta name="theme-color" content="#151116" />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("naan-stop-theme");
+          if (saved === "light" || saved === "dark") {
+            document.documentElement.dataset.theme = saved;
+          }
+        } catch (e) {}
+      })();
+    </script>
     <meta name="robots" content="index, follow" />
     <meta property="og:type" content="restaurant" />
     <meta property="og:title" content="NAAN STOP FRENCH TACOS" />
@@ -22,9 +32,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Instrument+Serif&family=Manrope:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/gilroy-900-italic.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/gilroy-700.woff2" crossorigin />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -43,7 +55,7 @@
       }
     </script>
   </head>
-  <body class="bg-ink">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -14,23 +14,26 @@ export default function App() {
   return (
     <LanguageProvider>
       <CartProvider>
-        <div className="site-shell relative isolate min-h-screen overflow-hidden">
-          <div aria-hidden="true" className="cafe-ambience pointer-events-none fixed inset-0 -z-10">
-          <div className="ambience-lamp ambience-lamp-left" />
-          <div className="ambience-lamp ambience-lamp-right" />
-          <div className="ambience-grid" />
-        </div>
-        <Navbar />
-        <main>
-          <Hero />
-          <Marquee />
-          <Menu />
-          <About />
-          <Contact />
-        </main>
-        <Footer />
-        <FloatingWhatsApp />
-        <Cart />
+        <div className="site-shell relative isolate min-h-screen">
+          <div
+            aria-hidden="true"
+            className="cafe-ambience pointer-events-none fixed inset-0 -z-10"
+          >
+            <div className="ambience-lamp ambience-lamp-left" />
+            <div className="ambience-lamp ambience-lamp-right" />
+            <div className="ambience-grid" />
+          </div>
+          <Navbar />
+          <main>
+            <Hero />
+            <Marquee />
+            <Menu />
+            <About />
+            <Contact />
+          </main>
+          <Footer />
+          <FloatingWhatsApp />
+          <Cart />
         </div>
       </CartProvider>
     </LanguageProvider>

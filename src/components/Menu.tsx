@@ -1,31 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { memo, useEffect, useMemo, useRef, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import type { MenuItem, MenuSize } from "../data/site";
 import { useCart } from "../cart/CartContext";
 import { useLanguage } from "../i18n/LanguageContext";
 import { FlameIcon, BagIcon } from "./icons";
-
-function useOnScreen(ref: React.RefObject<HTMLElement | null>, rootMargin = "0px 0px -40px 0px") {
-  const [onScreen, setOnScreen] = useState(false);
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setOnScreen(true);
-          obs.disconnect();
-        }
-      },
-      { rootMargin }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [ref, rootMargin]);
-  return onScreen;
-}
 
 /** The dish plus the category it came from — the cart keys lines on both. */
 type Picked = { categoryId: string; item: MenuItem };
@@ -82,13 +61,13 @@ export default function Menu() {
       <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
         <div>
           <p className="editorial-kicker font-label">{t.menu.kicker}</p>
-          <h2 className="editorial-heading mt-5 text-6xl text-white sm:text-8xl font-heading">
+          <h2 className="editorial-heading mt-5 text-6xl text-fg sm:text-8xl font-heading">
             {t.menu.heading1}
             <br />
             <span className="text-brand">{t.menu.heading2}</span>
           </h2>
         </div>
-        <p className="max-w-lg justify-self-end text-base leading-relaxed text-neutral-400 lg:pb-2">
+        <p className="max-w-lg justify-self-end text-base leading-relaxed text-muted lg:pb-2">
           {t.menu.description}
         </p>
       </div>
@@ -96,7 +75,7 @@ export default function Menu() {
       <div
         role="tablist"
         aria-label={t.menu.kicker}
-        className="mt-14 flex flex-wrap gap-2 border-y border-white/10 py-4"
+        className="mt-14 flex flex-wrap gap-2 border-y border-line py-4"
       >
         {categories.map((cat) => (
           <button
@@ -108,7 +87,7 @@ export default function Menu() {
             className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-wider transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${
               active === cat.id
                 ? "bg-brand text-white"
-                : "border border-neutral-700 text-neutral-300 hover:border-brand hover:text-brand"
+                : "border border-line text-muted hover:border-brand hover:text-brand"
             }`}
           >
             {cat.label}
@@ -116,8 +95,8 @@ export default function Menu() {
         ))}
       </div>
 
-      <div className="mt-8 flex flex-col gap-4 border-b border-white/10 pb-5 sm:flex-row sm:items-center sm:justify-between">
-        <label className="flex min-w-0 flex-1 items-center gap-3 rounded-full border border-white/15 bg-black/15 px-5 py-3 text-sm text-neutral-400 focus-within:border-brand">
+      <div className="mt-8 flex flex-col gap-4 border-b border-line pb-5 sm:flex-row sm:items-center sm:justify-between">
+        <label className="flex min-w-0 flex-1 items-center gap-3 rounded-full border border-line bg-surface-2 px-5 py-3 text-sm text-muted focus-within:border-brand">
           <span aria-hidden="true" className="text-brand">
             /
           </span>
@@ -127,14 +106,14 @@ export default function Menu() {
             onChange={(event) => setQuery(event.target.value)}
             placeholder={t.menu.search}
             aria-label={t.menu.search}
-            className="min-w-0 flex-1 bg-transparent outline-none placeholder:text-neutral-600"
+            className="min-w-0 flex-1 bg-transparent outline-none placeholder:text-faint"
           />
           {query && (
             <button
               type="button"
               onClick={() => setQuery("")}
               aria-label={t.menu.clear}
-              className="text-xs uppercase tracking-wider text-neutral-500 transition hover:text-white"
+              className="text-xs uppercase tracking-wider text-faint transition hover:text-fg"
             >
               {t.menu.clear}
             </button>
@@ -143,7 +122,7 @@ export default function Menu() {
         <button
           type="button"
           onClick={() => cart.setOpen(true)}
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-brand/60 px-5 py-3 text-xs font-semibold uppercase tracking-wider text-brand transition hover:bg-brand hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-brand/60 px-5 py-3 text-xs font-semibold uppercase tracking-wider text-brand transition hover:bg-brand hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
         >
           <BagIcon className="h-4 w-4" />
           {t.checkout.title}
@@ -181,7 +160,7 @@ export default function Menu() {
       </AnimatePresence>
 
       {results.length === 0 && (
-        <p className="mt-12 border border-dashed border-white/15 p-8 text-center text-sm text-neutral-400">
+        <p className="mt-12 border border-dashed border-line p-8 text-center text-sm text-muted">
           {t.menu.noResults}
         </p>
       )}
@@ -253,14 +232,14 @@ function DetailSheet({ entry, onClose }: { entry: Picked; onClose: () => void })
           />
         )}
         <p className="editorial-kicker mt-6">{t.menu.fromTheGrill}</p>
-        <p className="font-heading text-4xl text-white">{lang === "es" ? item.nameEs ?? item.name : item.name}</p>
-        <p className="mt-4 text-sm leading-relaxed font-body text-neutral-400">
+        <p className="font-heading text-4xl text-fg">{lang === "es" ? item.nameEs ?? item.name : item.name}</p>
+        <p className="mt-4 text-sm leading-relaxed font-body text-muted">
           {lang === "es" ? item.descEs ?? item.desc : item.desc}
         </p>
 
         {sizes.length > 0 && (
           <div className="mt-6">
-            <p className="font-label text-[11px] uppercase tracking-wider text-neutral-400">
+            <p className="font-label text-[11px] uppercase tracking-wider text-muted">
               {t.checkout.size}
             </p>
             <div role="radiogroup" aria-label={t.checkout.size} className="mt-2 flex flex-wrap gap-2">
@@ -274,7 +253,7 @@ function DetailSheet({ entry, onClose }: { entry: Picked; onClose: () => void })
                   className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-wider transition ${
                     size?.label === option.label
                       ? "border-brand bg-brand text-white"
-                      : "border-white/15 text-neutral-300 hover:border-brand hover:text-brand"
+                      : "border-line text-muted hover:border-brand hover:text-brand"
                   }`}
                 >
                   {(lang === "es" ? option.labelEs ?? option.label : option.label) +
@@ -286,9 +265,9 @@ function DetailSheet({ entry, onClose }: { entry: Picked; onClose: () => void })
           </div>
         )}
 
-        <div className="mt-6 flex items-center justify-between gap-4 border-t border-white/10 pt-5">
+        <div className="mt-6 flex items-center justify-between gap-4 border-t border-line pt-5">
           <div className="flex items-center gap-3">
-            <span className="font-label text-[11px] uppercase tracking-wider text-neutral-400">
+            <span className="font-label text-[11px] uppercase tracking-wider text-muted">
               {t.checkout.quantity}
             </span>
             <button
@@ -299,7 +278,7 @@ function DetailSheet({ entry, onClose }: { entry: Picked; onClose: () => void })
             >
               −
             </button>
-            <span className="w-5 text-center text-sm font-semibold text-white">{quantity}</span>
+            <span className="w-5 text-center text-sm font-semibold text-fg">{quantity}</span>
             <button
               type="button"
               onClick={() => setQuantity((q) => Math.min(99, q + 1))}
@@ -316,7 +295,7 @@ function DetailSheet({ entry, onClose }: { entry: Picked; onClose: () => void })
           <button
             type="button"
             onClick={onClose}
-            className="flex-1 rounded-full border border-white/15 px-4 py-3 text-xs font-btn uppercase tracking-wider text-neutral-300 transition hover:border-brand hover:text-brand"
+            className="flex-1 rounded-full border border-line px-4 py-3 text-xs font-btn uppercase tracking-wider text-muted transition hover:border-brand hover:text-brand"
           >
             {t.menu.close}
           </button>
@@ -364,26 +343,14 @@ const ItemCard = memo(function ItemCard({
   price,
   hasSizes,
 }: ItemCardProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const onScreen = useOnScreen(cardRef);
   const { item } = entry;
-
-  const variants = {
-    hidden: { opacity: 0, y: 28 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: Math.min(i, 8) * 0.04 + 0.08, duration: 0.5, ease: "easeOut" },
-    }),
-  };
 
   return (
     <motion.article
-      ref={cardRef}
-      custom={index}
-      variants={variants}
-      initial="hidden"
-      animate={onScreen ? "visible" : "hidden"}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.45, ease: "easeOut", delay: Math.min(index % 6, 5) * 0.05 }}
       whileHover={{ y: -4, scale: 1.008 }}
       layout
       className="cafe-card group relative flex h-[31rem] flex-col overflow-hidden rounded-2xl p-5"
@@ -396,7 +363,7 @@ const ItemCard = memo(function ItemCard({
       />
       <div className="pointer-events-none absolute inset-0 -z-10 h-full w-full rounded-xl bg-clip-border border-shimmer" />
       {item.img && (
-        <div className="pointer-events-none mb-4 overflow-hidden rounded-lg border border-neutral-700 bg-neutral-800">
+        <div className="pointer-events-none mb-4 overflow-hidden rounded-lg border border-line bg-surface-2">
           <img
             src={item.img}
             alt={name}
@@ -409,7 +376,7 @@ const ItemCard = memo(function ItemCard({
         </div>
       )}
       <div className="pointer-events-none flex items-start justify-between gap-3">
-        <h3 className="min-h-[3.5rem] font-menu-name text-lg leading-tight tracking-wide text-white">
+        <h3 className="min-h-[3.5rem] font-menu-name text-lg leading-tight tracking-wide text-fg">
           {name.toUpperCase()}
         </h3>
         {item.tag && (
@@ -423,8 +390,8 @@ const ItemCard = memo(function ItemCard({
           </span>
         )}
       </div>
-      <p className="pointer-events-none mt-2 flex-1 text-sm leading-relaxed font-body text-neutral-400">{desc}</p>
-      <div className="relative z-10 mt-4 flex items-center justify-between border-t border-neutral-800 pt-4">
+      <p className="pointer-events-none mt-2 flex-1 text-sm leading-relaxed font-body text-muted">{desc}</p>
+      <div className="relative z-10 mt-4 flex items-center justify-between border-t border-line pt-4">
         <span className="font-price text-sm font-bold tracking-wide text-brand">
           {hasSizes ? `${price}+` : price}
         </span>

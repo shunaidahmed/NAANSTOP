@@ -23,4 +23,4 @@ dist-ssr
 .vercel
 
 # Unused local font drop (Gilroy is a commercial licence, and nothing loads it)
-fonts/
+/fonts/
