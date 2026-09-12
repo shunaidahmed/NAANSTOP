@@ -83,7 +83,7 @@ function save(key: string, value: unknown) {
   }
 }
 
-export const lineId = (categoryId: string, name: string, size?: string) =>
+const lineId = (categoryId: string, name: string, size?: string) =>
   `${categoryId}::${name}::${size || ""}`;
 
 interface CartContextType {

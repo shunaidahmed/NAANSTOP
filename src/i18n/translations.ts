@@ -322,5 +322,3 @@ export const translations = {
     order: "Order",
   },
 } as const;
-
-export type Translations = typeof translations.es;

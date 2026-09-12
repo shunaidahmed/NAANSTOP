@@ -28,17 +28,9 @@ export const SITE = {
   minDeliveryOrder: 12,
 } as const;
 
-export const waLink = (message: string): string =>
-  `https://wa.me/${SITE.phone}?text=${encodeURIComponent(message)}`;
-
 export const DEFAULT_WA_MESSAGE = "Hi NAAN STOP! I'd like to place an order.";
 
 export const DEFAULT_WA_MESSAGE_ES = "¡Hola NAAN STOP! Me gustaría hacer un pedido.";
-
-export const mapsUrl = (): string =>
-  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `${SITE.name} ${SITE.subtitle}, ${SITE.address}`
-  )}`;
 
 /** A size option, e.g. Medium / Large. Each size carries its own price. */
 export interface MenuSize {

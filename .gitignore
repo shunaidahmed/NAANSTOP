@@ -18,3 +18,6 @@ dist-ssr
 
 # Env
 *.local
+
+# Vercel
+.vercel
