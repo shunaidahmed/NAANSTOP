@@ -587,7 +587,21 @@
     return h(
       "div",
       {},
-      head("Site settings", "Name, WhatsApp number, address and opening hours. These feed every button and card on the site."),
+      head(
+        "Site settings",
+        "Logo, name, WhatsApp number, address and opening hours. These feed every button, link and card on the site."
+      ),
+      h(
+        "div",
+        { class: "card" },
+        h("div", { class: "card__hd" }, h("h3", {}, "Brand")),
+        imageField("Logo", s, "logo"),
+        h(
+          "div",
+          { class: "note" },
+          "Shown in the header and the footer at a small size, so a round mark reads best. Square images work; wide ones get cramped."
+        )
+      ),
       h(
         "div",
         { class: "card" },
@@ -599,7 +613,6 @@
           field("WhatsApp number", s, "phone", {
             hint: "Country code + digits, no + and no spaces. e.g. 34624205945",
           }),
-          field("Currency symbol", s, "currency"),
           field("Address", s, "address", { rows: 2, span: true }),
           field("Default WhatsApp message (English)", s, "waMessage", { rows: 2, span: true }),
           field("Default WhatsApp message (Spanish)", s, "waMessageEs", { rows: 2, span: true })

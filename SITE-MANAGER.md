@@ -38,7 +38,7 @@ variable stops mattering.
 | **Navigation** | The links in the header and footer |
 | **Photos** | The hero carousel and the About strip |
 | **Media** | Uploaded images — add, copy a link, delete |
-| **Site settings** | Name, WhatsApp number, address, opening hours, default order message, and **Ordering** — delivery on/off, currency, delivery fee, minimum delivery order |
+| **Site settings** | **Logo**, name, WhatsApp number, address, opening hours, default order message, and **Ordering** — delivery on/off, currency, delivery fee, minimum delivery order |
 | **Search & sharing** | Page title, meta description, share image |
 | **Analytics & tags** | Tag Manager, GA4, Google Ads, Meta, TikTok, LinkedIn, Clarity, consent banner, custom code |
 | **System** | Password, the last 20 published versions, reset to shipped defaults |

@@ -25,6 +25,7 @@ export interface SiteSettings {
   phone: string;
   currency: string;
   address: string;
+  logo: string;
   hours: { days: string; time: string; daysEs: string; timeEs: string }[];
   hoursNote: string;
   hoursNoteEs: string;

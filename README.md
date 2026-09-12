@@ -33,11 +33,17 @@ still renders if the API is unreachable.
 
 ## Look and feel
 
-Type is **Gilroy** (self-hosted in `public/fonts/`, converted from the `fonts/`
-folder in this repo) for display and UI, **Manrope** for body copy. Only
-Gilroy Bold and Black carry bytes in that folder — the rest of the family
-downloaded as 0-byte stubs — so the hierarchy is built from those two weights
-plus case and slant.
+Type is all self-hosted in `public/fonts/` — no Google Fonts request.
+
+| Role | Face |
+|---|---|
+| Headings, hero, body copy | **Supra Classic** — the face in the logo |
+| Dish names, nav, buttons, prices, labels | **Gilroy** |
+
+Both families live in `fonts/` and are converted to woff2 by hand. Gilroy
+still ships only Bold and Black — the other sixteen files there are 0-byte
+stubs — which is why body copy is Supra Classic Book and not Gilroy Regular.
+Drop the full Gilroy in and point `--font-body` at it.
 
 Dark is the default theme; the toggle in the header switches to light and the
 choice is remembered. Colours are semantic tokens in `src/index.css`

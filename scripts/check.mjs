@@ -144,7 +144,7 @@ const { readFile } = await import("node:fs/promises");
 const defaults = JSON.parse(await readFile("public/admin/defaults.json", "utf8"));
 
 for (const path of [
-  "site.name", "site.phone", "site.currency", "site.delivery", "site.deliveryFee",
+  "site.name", "site.phone", "site.currency", "site.logo", "site.delivery", "site.deliveryFee",
   "site.minDeliveryOrder", "site.hours", "site.waMessage", "site.waMessageEs",
   "menu", "gallery.hero", "gallery.about", "nav", "seo.title", "tags.consent",
   "t.es.checkout.send", "t.en.checkout.send", "t.es.orderMessage.total",

@@ -5,6 +5,7 @@
     "phone": "34624205945",
     "currency": "EUR",
     "address": "Passeig Prat de la Riba, 78, 08320 El Masnou, Barcelona, Spain",
+    "logo": "/logo.png",
     "hours": [
       {
         "days": "Monday – Sunday",

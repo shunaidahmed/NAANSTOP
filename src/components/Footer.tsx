@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col gap-10 px-4 py-16 sm:px-8 lg:px-12">
         <a href="#home" aria-label={SITE.name} className="flex w-fit items-center">
           <img
-            src="/logo.png"
+            src={SITE.logo || "/logo.png"}
             alt={`${SITE.name} ${SITE.subtitle}`}
             width={400}
             height={400}

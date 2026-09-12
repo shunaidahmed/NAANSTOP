@@ -55,7 +55,7 @@ export default function Navbar() {
       <nav className="site-nav mx-auto flex h-16 max-w-7xl items-center justify-between rounded-full px-4 sm:px-6" aria-label="Main navigation">
         <a href="#home" aria-label={SITE.name} className="flex items-center" onClick={() => setOpen(false)}>
           <img
-            src="/logo.png"
+            src={SITE.logo || "/logo.png"}
             alt={`${SITE.name} ${SITE.subtitle}`}
             width={400}
             height={400}

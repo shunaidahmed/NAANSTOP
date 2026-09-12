@@ -13,6 +13,8 @@ export const SITE = {
   /** ISO 4217. Prices are formatted with Intl, so this is all it takes. */
   currency: "EUR",
   address: "Passeig Prat de la Riba, 78, 08320 El Masnou, Barcelona, Spain",
+  /** The round badge in the header and the footer. Replaceable at /admin/. */
+  logo: "/logo.png",
   hours: [
     { days: "Monday – Sunday", time: "12:00 PM – 12:00 AM", daysEs: "Lunes – Domingo", timeEs: "12:00 PM – 12:00 AM" },
   ],
