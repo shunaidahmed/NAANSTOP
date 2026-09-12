@@ -23,8 +23,10 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
 /* ── login ─────────────────────────────────────────────────── */
 .login{min-height:100vh;display:grid;place-items:center;background:var(--ink);padding:24px}
 .login__card{width:100%;max-width:380px;background:var(--bone);border-radius:16px;padding:34px 32px}
-.login__card h1{font-weight:300;font-size:26px;letter-spacing:-.02em}
-.login__card h1 b{font-weight:500;color:var(--brand)}
+.login__logo{width:88px;height:88px;margin:0 auto 16px;display:block;border-radius:50%}
+.login__card{text-align:center}
+.login__card h1{font-weight:500;font-size:22px;letter-spacing:-.01em}
+.login__card form,.login__card .login__err{text-align:left}
 .login__card p{margin-top:8px;font-size:14px;color:var(--ink-52)}
 .login__card form{margin-top:22px;display:grid;gap:12px}
 .login__err{margin-top:12px;font-size:13.5px;color:var(--err);min-height:20px}
@@ -32,7 +34,8 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:
 /* ── chrome ────────────────────────────────────────────────── */
 .top{position:sticky;top:0;z-index:30;background:var(--ink);color:var(--bone);
   display:flex;align-items:center;gap:16px;padding:0 20px;height:56px}
-.top__brand{font-weight:300;font-size:16px;letter-spacing:-.01em}
+.top__brand{display:flex;align-items:center;gap:10px;font-weight:300;font-size:15px;letter-spacing:-.01em}
+.top__brand img{width:30px;height:30px;border-radius:50%}
 .top__brand b{font-weight:500;color:#ff6b70}
 .top__sp{margin-left:auto}
 .top a,.top button.link{color:rgba(244,242,238,.72);text-decoration:none;font-size:13.5px;

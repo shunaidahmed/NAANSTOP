@@ -12,16 +12,15 @@ export default function Footer() {
   return (
     <footer className="border-t border-line bg-surface-2">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 px-4 py-16 sm:px-8 lg:px-12">
-        <a href="#home" className="flex items-center gap-3">
+        <a href="#home" aria-label={SITE.name} className="flex w-fit items-center">
           <img
             src="/logo.png"
             alt={`${SITE.name} ${SITE.subtitle}`}
             width={400}
             height={400}
             loading="lazy"
-            className="h-16 w-16 rounded-full"
+            className="h-20 w-20 rounded-full"
           />
-          <span className="whitespace-nowrap font-logo text-xl tracking-wider text-fg">NAAN <span className="text-brand">STOP</span></span>
         </a>
 
         <div className="flex flex-col justify-between gap-8 border-y border-line py-8 sm:flex-row sm:items-center">

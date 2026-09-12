@@ -53,15 +53,14 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4 transition-colors sm:px-8">
       <nav className="site-nav mx-auto flex h-16 max-w-7xl items-center justify-between rounded-full px-4 sm:px-6" aria-label="Main navigation">
-        <a href="#home" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+        <a href="#home" aria-label={SITE.name} className="flex items-center" onClick={() => setOpen(false)}>
           <img
             src="/logo.png"
             alt={`${SITE.name} ${SITE.subtitle}`}
             width={400}
             height={400}
-            className={`h-11 w-11 rounded-full transition-shadow duration-500 ${scrolled ? "shadow-[0_0_18px_rgba(227,30,36,0.45)]" : ""}`}
+            className={`h-12 w-12 rounded-full transition-shadow duration-500 ${scrolled ? "shadow-[0_0_18px_rgba(227,30,36,0.45)]" : ""}`}
           />
-          <span className="hidden whitespace-nowrap font-logo text-lg tracking-wider text-fg sm:inline">NAAN<span className="text-brand"> STOP</span></span>
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">
