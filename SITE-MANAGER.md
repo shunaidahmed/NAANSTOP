@@ -1,31 +1,31 @@
 # NAAN STOP — Site Manager
 
-Admin panel: **https://&lt;your-domain&gt;/admin/**
+Admin panel: **https://naanstop-two.vercel.app/admin/**
+
+Site: **https://naanstop-two.vercel.app**
 
 ---
 
-## One-time setup (Vercel)
+## Setup — already done
 
-The panel needs three things on the Vercel project. Two minutes, once.
+The Vercel project is configured and live. For the record, this is what is in
+place; you do not need to do any of it again.
 
-1. **Storage → Create → Blob store**, then connect it to this project.
-   Vercel adds `BLOB_READ_WRITE_TOKEN` for you. Nothing else to configure.
-2. **Settings → Environment Variables**, add both, for all environments:
+| Thing | State |
+|---|---|
+| Blob store `naanstop-cms` | created and connected to the project |
+| `BLOB_READ_WRITE_TOKEN` | set automatically by that connection |
+| `CMS_SECRET` | set (random 32 bytes) |
+| `ADMIN_PASSWORD` | set — the starting password |
+| Deploys | on every push to `main` |
 
-   | Name | Value |
-   |---|---|
-   | `CMS_SECRET` | a long random string — `openssl rand -hex 32` |
-   | `ADMIN_PASSWORD` | the starting password for the panel |
-
-3. Redeploy.
-
-Sign in at `/admin/` with `ADMIN_PASSWORD`. The panel will nag you until you
-change it under **System → Admin password** — do that, and the environment
-variable stops mattering.
+**Change the password on first sign-in** under System → Admin password. Until
+you do, the panel warns you at every login. Once changed, `ADMIN_PASSWORD`
+stops mattering: the new one is hashed and stored in the Blob store.
 
 > `CMS_SECRET` signs the login session **and** decides where the password file
-> is stored. Changing it later signs everybody out and resets the password back
-> to `ADMIN_PASSWORD`.
+> lives. Changing it signs everybody out and resets the password back to
+> `ADMIN_PASSWORD`.
 
 ---
 
