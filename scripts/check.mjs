@@ -122,7 +122,7 @@ assert.match(collected, /Notes: No onion/);
 /* ── session cookie ──────────────────────────────────────────── */
 const { mintCookie, signedIn } = await load("api/cms.ts", "cms.mjs");
 
-const withCookie = (value) => new Request("https://x/api/cms", { headers: { cookie: value } });
+const withCookie = (value) => ({ headers: { cookie: value } });
 const cookie = mintCookie().split(";")[0];
 
 assert.equal(signedIn(withCookie(cookie)), true, "a freshly minted cookie must be accepted");

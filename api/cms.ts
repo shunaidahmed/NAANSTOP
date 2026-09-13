@@ -11,7 +11,21 @@
 import { put, list, del } from "@vercel/blob";
 import { createHmac, randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
 
-export const config = { runtime: "nodejs", maxDuration: 20 };
+export const config = { maxDuration: 20 };
+
+/** Vercel's Node runtime calls the handler as (req, res). Typed here rather
+ *  than pulled from @vercel/node so this file needs no dependency of its own. */
+interface Req {
+  method?: string;
+  query: Record<string, string | string[] | undefined>;
+  headers: Record<string, string | string[] | undefined>;
+  body?: unknown;
+}
+interface Res {
+  status(code: number): Res;
+  setHeader(name: string, value: string | string[]): void;
+  json(body: unknown): void;
+}
 
 /* -- paths ----------------------------------------------------------- */
 const LIVE = "cms/live.json";
@@ -60,12 +74,6 @@ async function writeJson(path: string, data: unknown): Promise<void> {
   });
 }
 
-const json = (body: unknown, status = 200, headers: Record<string, string> = {}) =>
-  new Response(JSON.stringify(body), {
-    status,
-    headers: { "content-type": "application/json", ...headers },
-  });
-
 /* -- password -------------------------------------------------------- */
 type Auth = { salt: string; hash: string; seeded: boolean };
 
@@ -104,9 +112,9 @@ function mintCookie(): string {
 
 const killCookie = () => `${COOKIE}=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0`;
 
-function signedIn(req: Request): boolean {
+function signedIn(req: Req): boolean {
   if (!SECRET) return false;
-  const raw = req.headers.get("cookie") || "";
+  const raw = String(req.headers.cookie || "");
   const token = raw.match(new RegExp(`(?:^|;\\s*)${COOKIE}=([^;]+)`))?.[1];
   if (!token) return false;
   const [exp, mac] = token.split(".");
@@ -119,13 +127,16 @@ function signedIn(req: Request): boolean {
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 /* -- handler --------------------------------------------------------- */
-export default async function handler(req: Request): Promise<Response> {
+export default async function handler(req: Req, res: Res): Promise<void> {
+  const json = (body: unknown, status = 200, headers: Record<string, string> = {}) => {
+    for (const [name, value] of Object.entries(headers)) res.setHeader(name, value);
+    res.status(status).json(body);
+  };
+
   if (!SECRET) return json({ error: "CMS_SECRET is not set on this deployment." }, 500);
 
-  const url = new URL(req.url);
-
   if (req.method === "GET") {
-    if (url.searchParams.has("draft")) {
+    if (req.query.draft !== undefined) {
       if (!signedIn(req)) return json({ error: "Not signed in" }, 401);
       const draft = await readJson<unknown>(DRAFT, null);
       return json(draft ?? (await readJson<unknown>(LIVE, {})), 200, { "cache-control": "no-store" });
@@ -140,7 +151,7 @@ export default async function handler(req: Request): Promise<Response> {
 
   let body: Record<string, any>;
   try {
-    body = await req.json();
+    body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : ((req.body as Record<string, any>) ?? {});
   } catch {
     return json({ error: "Bad JSON body" }, 400);
   }
@@ -155,7 +166,7 @@ export default async function handler(req: Request): Promise<Response> {
       await sleep(600);
       return json({ error: "Wrong password" }, 401);
     }
-    return json({ ok: true, mustChangePassword: auth.seeded }, 200, { "set-cookie": mintCookie() });
+    return json({ ok: true, mustChangePassword: auth.seeded }, 200, { "Set-Cookie": mintCookie() });
   }
 
   if (action === "me") {
@@ -164,7 +175,7 @@ export default async function handler(req: Request): Promise<Response> {
     return json({ signedIn: true, mustChangePassword: !!auth?.seeded });
   }
 
-  if (action === "logout") return json({ ok: true }, 200, { "set-cookie": killCookie() });
+  if (action === "logout") return json({ ok: true }, 200, { "Set-Cookie": killCookie() });
 
   /* --- everything below needs a session --- */
   if (!signedIn(req)) return json({ error: "Not signed in" }, 401);
