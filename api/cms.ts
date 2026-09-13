@@ -51,8 +51,11 @@ function sig(value: string): string {
  *  and the store id is the 4th segment of the read-write token. Deriving it
  *  saves a `list()` round trip on every read. */
 function blobBase(): string {
-  const id = (process.env.BLOB_READ_WRITE_TOKEN || "").split("_")[3];
-  return `https://${id}.public.blob.vercel-storage.com`;
+  // The token carries the store id in its original case (store_ZKWAcR9tl...),
+  // but the hostname is lowercased. DNS does not care, string comparison does —
+  // deleteMedia refused its own uploads until this was normalised.
+  const id = (process.env.BLOB_READ_WRITE_TOKEN || "").split("_")[3] || "";
+  return `https://${id.toLowerCase()}.public.blob.vercel-storage.com`;
 }
 
 async function readJson<T>(path: string, fallback: T): Promise<T> {
